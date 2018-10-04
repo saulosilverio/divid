@@ -1,26 +1,26 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
-		<symbol viewBox="0 0 28 26" xmlns="http://www.w3.org/2000/svg" id="jogadores">
+		<symbol viewBox="0 0 28 26" id="jogadores">
 			<title>Jogadores</title>
 			<path d="M19.383 19.3l7.017 6.152 1.318-1.504-7.583-6.648H7.583L0 23.948l1.318 1.504L8.335 19.3zm-5.524-4.7a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6zm0-2a5.3 5.3 0 1 0 0-10.6 5.3 5.3 0 0 0 0 10.6z" fill="#111"></path>
 		</symbol>
-		<symbol viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" id="dividir">
+		<symbol viewBox="0 0 25 25" id="dividir">
 			<title>Dividir</title>
 			<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
 		</symbol>
-		<symbol viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="mais">
+		<symbol viewBox="0 0 22 22" id="mais">
 			<title>Mais</title>
 			<path d="M10.805 11.271h10.771v-2H10.805V0h-2v9.271H.034v2h8.771v10.272h2V11.271z"></path>
 		</symbol>
-		<symbol viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg" id="seta-esq">
+		<symbol viewBox="0 0 28 20" id="seta-esq">
 			<title>Seta Esq</title>
 			<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
 		</symbol>
-		<symbol viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg" id="check">
+		<symbol viewBox="0 0 11 9" id="check">
 			<title>Check</title>
 			<path d="M1.582 2.068L0 3.292l3.951 5.103 6.573-7.029L9.064 0l-4.97 5.313z"></path>
 		</symbol>
-		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.795 17.456" id="nivel">
+		<symbol viewBox="0 0 18.795 17.456" id="nivel">
 			<title>Nível</title>
 			<path d="M18.795 6.675H11.6L9.4 0 7.193 6.675H0l5.882 4.107-2.291 6.675L9.4 13.32l5.8 4.136-2.295-6.675z"></path>
 		</symbol>

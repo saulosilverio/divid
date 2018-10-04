@@ -7,7 +7,7 @@
 		"uuidString": "DE34F394-FFD8-43B6-B980-638F65C5F7F4"
 		}
 	],
-"creatorBuild": "28841",
+"creatorBuild": "28901",
 "files": {
 	"/css/style.css": {
 		"aP": 1,
@@ -18,6 +18,120 @@
 		"oAP": "/css/style-min.css",
 		"oF": 0,
 		"oS": 3
+		},
+	"/fonts/Metric-Medium.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Medium.eot",
+		"oF": 0
+		},
+	"/fonts/Metric-Medium.otf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Medium.otf",
+		"oF": 0
+		},
+	"/fonts/Metric-Medium.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/fonts/Metric-Medium.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/fonts/Metric-Medium.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Medium.ttf",
+		"oF": 0
+		},
+	"/fonts/Metric-Medium.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Medium.woff",
+		"oF": 0
+		},
+	"/fonts/Metric-Regular.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Regular.eot",
+		"oF": 0
+		},
+	"/fonts/Metric-Regular.otf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Regular.otf",
+		"oF": 0
+		},
+	"/fonts/Metric-Regular.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/fonts/Metric-Regular.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/fonts/Metric-Regular.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Regular.ttf",
+		"oF": 0
+		},
+	"/fonts/Metric-Regular.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Regular.woff",
+		"oF": 0
+		},
+	"/fonts/Metric-Semibold.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Semibold.eot",
+		"oF": 0
+		},
+	"/fonts/Metric-Semibold.otf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Semibold.otf",
+		"oF": 0
+		},
+	"/fonts/Metric-Semibold.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/fonts/Metric-Semibold.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/fonts/Metric-Semibold.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Semibold.ttf",
+		"oF": 0
+		},
+	"/fonts/Metric-Semibold.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/fonts/Metric-Semibold.woff",
+		"oF": 0
 		},
 	"/icons/check.svg": {
 		"ft": 2097152,
@@ -99,6 +213,71 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"/scss/_fonts.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_fonts.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_general.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_general.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_navbar.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_navbar.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_reset.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_reset.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_splash.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_splash.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"/scss/_style.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -110,6 +289,32 @@
 		"oAP": "/css/style.css",
 		"oF": 3,
 		"oS": 3,
+		"uL": 1
+		},
+	"/scss/_tabbar.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_tabbar.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_variables.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_variables.css",
+		"oF": 0,
+		"oS": 0,
 		"uL": 1
 		}
 	},

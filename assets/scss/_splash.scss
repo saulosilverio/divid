@@ -1,0 +1,15 @@
+.splash {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100%;
+	> div {
+		display: block;
+	}
+	svg {
+		display: block;
+		height: auto;
+		width: 25vw;
+	}
+}
