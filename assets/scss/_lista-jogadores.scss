@@ -1,0 +1,70 @@
+.lista-jogadores {
+	color: $primary-color;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	
+	li {
+		display: flex;
+		justify-content: space-between;
+		border-top: 1px solid $light-color;
+		padding: $padding-sm 0;
+		
+		&:first-child {
+			border-top: none;
+		}
+	}
+	
+	strong {
+		display: block;
+		font-weight: 500;
+	}
+	small {
+		color: $gray-color;
+		font-size: 12pt;
+	}
+}
+.nivel {
+	display: flex;
+	color: $light-color;
+	font-size: 8pt;
+	padding: 3pt 0;
+	
+	svg {
+	  display: inline-block;
+	  width: 1em;
+	  height: 1em;
+	  margin-left: 3pt;
+	  stroke-width: 0;
+	  stroke: currentColor;
+	  fill: currentColor;
+	}
+	&[data-stars="0"] {
+		display: none;
+	}
+	&[data-stars="1"] {
+		svg:nth-child(1) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="2"] {
+		svg:nth-child(-n+2) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="3"] {
+		svg:nth-child(-n+3) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="4"] {
+		svg:nth-child(-n+4) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="5"] {
+		svg:nth-child(-n+5) {
+			fill: $primary-color;
+		}
+	}
+}

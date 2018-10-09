@@ -19,6 +19,8 @@ img {
   fill: currentColor;
 }
 section {
+	padding: $h-navbar $padding-md $h-tabbar $padding-md;
+	
 	.empty {
 		color: $light-color;
 		display: flex;
