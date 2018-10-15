@@ -41,9 +41,13 @@ button {
 .stars {
 	cursor: pointer;
 	display: flex;
-	font-size: 16pt;
-	padding: 8pt 0;
-  
+	font-size: 28pt;
+	padding: 8pt 0 0 0;
+	
+	.star {
+		padding-right: 14pt;
+	}
+	
 	&:hover {
 		.star {
 			fill: $primary-color !important;
@@ -54,27 +58,22 @@ button {
 		display: inline-block;
 		width: 1em;
 		height: 1em;
-		margin-right: 14pt;
 		stroke-width: 0;
 		stroke: currentColor;
 		fill: currentColor;
 	}
 		
 	.star {
-		polygon {
-			fill: $light-color;
-		}
+		fill: $light-color;
 	
 		&:hover ~ .star {
-			polygon {
-				fill: $light-color !important;
-			}
+			fill: $light-color !important;
 		}
 	}
 	
 	&[data-stars] {
-		.star polygon {
-			fill: $primary-color;
+		.star {
+			fill: $light-color;
 		}
 	}
 	
