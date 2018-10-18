@@ -71,7 +71,7 @@
 .selecao-jogadores {
 	color: $primary-color;
 	list-style: none;
-	margin: 0;
+	margin: 0 0 12pt 0;
 	padding: 0;
 	
 	li {
@@ -98,6 +98,9 @@
 	small {
 		color: $gray-color;
 		font-size: 12pt;
+	}
+	+ button {
+		margin-bottom: 18pt;
 	}
 }
 
