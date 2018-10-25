@@ -9,6 +9,7 @@
 		justify-content: space-between;
 		border-top: 1px solid $light-color;
 		padding: $padding-sm 0;
+		position: relative;
 		
 		&:first-child {
 			border-top: none;
@@ -140,4 +141,16 @@
 			border-color: transparent;
 		}	
 	}
+}
+
+// DELETE
+.delete-btn {
+    background: #FA4D4D;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 100%;
+	padding: 0 12pt;
+	right: 0 !important;
+    top: 0 !important;
 }
