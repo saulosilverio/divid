@@ -144,13 +144,19 @@
 }
 
 // DELETE
-.delete-btn {
+.btn-remove-lista {
     background: #FA4D4D;
+    border: none;
     color: #fff;
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
 	padding: 0 12pt;
+	position: absolute;
 	right: 0 !important;
     top: 0 !important;
+    width: 40pt;
+    border-radius: 0;
+    margin: 0;
 }

@@ -1,1 +1,1 @@
-$(".star.rating").click(function(){console.log($(this).parent().data("stars")+", "+$(this).data("rating")),$(this).parent().attr("data-stars",$(this).data("rating"))}),new SwipeOut(document.getElementById("list")),$("#list").on("click","li",function(t){}).on("delete","li",function(t){$(this).addClass("delete")});
+$(".star.rating").click(function(){$(this).parent().attr("data-stars",$(this).data("rating"))}),$("#jogador").on("swipeleft",function(){$(this).addClass("left")});
