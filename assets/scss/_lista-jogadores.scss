@@ -1,3 +1,6 @@
+.overflow-hidden {
+	overflow: hidden;
+}
 .lista-jogadores {
 	color: $primary-color;
 	list-style: none;
@@ -11,8 +14,22 @@
 		padding: $padding-sm 0;
 		position: relative;
 		
+		-webkit-transition: all 0.2s ease-in-out;
+			    transition: all 0.2s ease-in-out;
+		
 		&:first-child {
 			border-top: none;
+		}
+		
+		&.show-remove {
+			transform: translateX(-40pt);
+			
+			.btn-remove-lista {
+				opacity: 1;
+			}
+			.nivel {
+				margin-right: 6pt;
+			}
 		}
 	}
 	
@@ -30,6 +47,9 @@
 	color: $light-color;
 	font-size: 8pt;
 	padding: 3pt 0;
+		
+	-webkit-transition: all 0.2s ease-in-out;
+		    transition: all 0.2s ease-in-out;	
 	
 	svg {
 	  display: inline-block;
@@ -159,4 +179,10 @@
     width: 40pt;
     border-radius: 0;
     margin: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    outline: none;
+    
+	-webkit-transition: all 0.2s ease-in-out;
+		    transition: all 0.2s ease-in-out;
 }
