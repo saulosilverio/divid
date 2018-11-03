@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Divid</title>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var players = [];
+			
+			if(typeof(Storage) !== "undefined") {
+		        if (localStorage.divid_players) {
+		        	players = JSON.parse(localStorage.divid_players);
+		        }
+		    }
+			
+			function updateLocalStorage(){
+				localStorage.divid_players = JSON.stringify(players);
+			}
+			
+			function addPlayer(){
+				var player = new Object();
+				player.name = $('#tf_name').val();
+				player.position = $('#tf_position').val();
+				player.skill = $('#tf_skill').val();
+				players.push(player);
+				$('#tf_name').val('');
+				$('#tf_position').val('');
+				$('#tf_skill').val('');
+				refreshListPlayers();
+			}
+			
+			function editPlayer(idx){
+				player = players[idx];
+				$('#tf_name').val(player.name);
+				$('#tf_position').val(player.position);
+				$('#tf_skill').val(player.skill);
+				$.mobile.loadPage("#page_player");
+			}
+			
+			function refreshListPlayers(){
+				$('#list_players').html("");
+				if(players.length > 0){
+					for(var i=0; i<players.length;i++){
+						$('#list_players').append(
+							"<li id=\"index-"+i+"\">"+
+								'<div class="behind"><a href="javascript: confirmAndDelete($(this).parent(\'li\'))" class="ui-btn delete-btn">Remover</a><a href="javascript: editPlayer('+i+')" class="ui-btn edit-btn pull-left">Editar</a></div>'+
+								'<a href="#"><h2 class="topic">'+players[i].name+'</h2>'+
+								'<p class="ui-li-aside">' +players[i].position+'</p>'+
+								'<div class="nivel" data-stars="' +players[i].skill+'">'+
+							    '</div>'+
+							   
+							'</li>'
+						);
+					}
+				}else{
+					$('#list_players').append('<li class="empty"><p>Nenhum jogador cadastrado</p></li>');
+				}
+				$('#list_players').listview("refresh");
+				updateLocalStorage();
+			}
+			
+			$('#btn_add').on('click', addPlayer);
+			
+			$(document).ready(function() {
+				refreshListPlayers();
+			});
+				
+			function confirmAndDelete( listitem ) {
+				listitem.children( ".ui-btn" ).addClass( "ui-btn-active" );
+				$( "#confirm .topic" ).remove();
+				$( "#confirm" ).popup( "open" );
+				$( "#confirm #cancel" ).on( "click", function() {
+					listitem.children( ".ui-btn" ).removeClass( "ui-btn-active" );
+					$( "#confirm #yes" ).off();
+				});
+				$( "#confirm #yes" ).on( "click", function() {
+					listitem.remove();
+					$( "#list_players" ).listview( "refresh" );
+					idx = $(listitem).attr('id').split('-');
+					players.splice(idx[1], 1);
+					refreshListPlayers();
+				});
+			}
+			
+			function prevent_default(e) {
+		        e.preventDefault();
+		    }
+
+		    function disable_scroll() {
+		        $(document).on('touchmove', prevent_default);
+		    }
+
+		    function enable_scroll() {
+		        $(document).unbind('touchmove', prevent_default)
+		    }
+
+		    var x;
+		    $('.swipe-delete li > a')
+		        .on('touchstart', function(e) {
+		            console.log(e.originalEvent.pageX)
+		            $('.swipe-delete li > a').css('left', '0px') // close em all
+		            $(e.currentTarget).addClass('open')
+		            x = e.originalEvent.targetTouches[0].pageX // anchor point
+		        })
+		        .on('touchmove', function(e) {
+		            var change = e.originalEvent.targetTouches[0].pageX - x
+		            change = Math.min(Math.max(-100, change), 100) // restrict to -100px left, 0px right
+		            e.currentTarget.style.left = change + 'px'
+		            if (change < -10) disable_scroll() // disable scroll once we hit 10px horizontal slide
+		        })
+		        .on('touchend', function(e) {
+		            var left = parseInt(e.currentTarget.style.left)
+		            var new_left;
+		            if (left < -35) {
+		                new_left = '-100px'
+		            } else if (left > 35) {
+		                new_left = '100px'
+		            } else {
+		                new_left = '0px'
+		            }
+		            // e.currentTarget.style.left = new_left
+		            $(e.currentTarget).animate({left: new_left}, 200)
+		            enable_scroll()
+		        });
+
+		    $('li .delete-btn').on('touchend', function(e) {
+		        e.preventDefault()
+		        $(this).parents('li').slideUp('fast', function() {
+		            $(this).remove()
+		        })
+		    })
+
+		    $('li .edit-btn').on('touchend', function(e) {
+		        e.preventDefault()
+		        $(this).parents('li').children('a').html('edited')
+		    })
+		});
+	</script>
+	<style>
+		/* Styling for the popup */
+		#confirm p {
+			text-align: center;
+			font-size: inherit;
+			margin-bottom: .75em;
+		}
+		.behind {
+	        width: 100%;
+	        height: 100%;
+	        position: absolute;
+	        top: 0;
+	        right: 0;
+	    }
+	    .behind a.ui-btn {
+	        width: 68px;
+	        margin: 0px;
+	        float: right;
+	        border: none;
+	    }
+	    .behind a.delete-btn, .behind a.delete-btn:active, .behind a.delete-btn:visited, .behind a.delete-btn:focus, .behind a.delete-btn:hover {
+	        color: white;
+	        background-color: red;
+	        text-shadow: none;
+	    }
+	    .behind a.ui-btn.pull-left {
+	        float: left;
+	    }
+	    .behind a.edit-btn, .behind a.edit-btn:active, .behind a.edit-btn:visited, .behind a.edit-btn:focus, .behind a.edit-btn:hover {
+	        color: white;
+	        background-color: orange;
+	        text-shadow: none;
+	    }
+    </style>
+</head>
+<body>
+	<!-- Start of "page_home" PAGE -->
+	<div id="page_home" data-role="page">
+		<div data-role="header" data-position="fixed">
+			<h1>Jogadores</h1>
+			<a href="#page_player" class="ui-btn-right">Add</a>
+		</div>
+		<div class="content">
+			<ul id="list_players" class="swipe-delete" data-role="listview">
+				<li class="empty"><p>Nenhum jogador cadastrado</p></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h2>Divid</h2>
+			<a href="#page_config" class="ui-btn-right"> % </a>
+		</div>
+		<!-- Start Popup message -->
+		<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+	        <p id="question">Tem certeza de que deseja excluir ?</p>
+	        <div class="ui-grid-a">
+	            <div class="ui-block-a">
+	                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Sim</a>
+	            </div>
+	            <div class="ui-block-b">
+	                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">N&atilde;o</a>
+	            </div>
+	        </div>
+		</div>
+	</div>
+	<!-- Start of "page_player" PAGE -->
+	<div id="page_player" data-role="page">
+		<div data-role="header" data-position="fixed">
+			<h1>Jogador</h1>
+			<a href="#page_home" class="ui-btn-right">Voltar</a>
+		</div>
+		<div class="ui-content">
+			<label for="tf_name">Nome:</label>
+			<input type="text" id="tf_name"  />
+			<label for="tf_position">Posi&ccedil;&atilde;o:</label>
+			<input type="text" id="tf_position" />
+			<label for="tf_skill" class="select">T&eacute;cnica:</label>
+			<select name="tf_skill" id="tf_skill">
+				<option> - selecione - </option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<a href="#page_home" id="btn_add" data-role="button">Salvar</a>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h2>Divid</h2>
+		</div>
+	</div>
+	<!-- Start of "page_config" PAGE -->
+	<div id="page_config" data-role="page">
+		<div data-role="header" data-position="fixed">
+			<h1>Configura&ccedil;&otilde;es</h1>
+			<a href="#page_home" class="ui-btn-right">Voltar</a>
+		</div>
+		<div class="ui-content">
+			<label for="tf_conf">Participantes por time:</label>
+			<input type="text" id="tf_conf"  />
+			<a href="#page_home" id="btn_add" data-role="button">Gerar</a>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h2>Divid</h2>
+		</div>
+	</div>
+	
+</body>
+</html>
