@@ -1,16 +1,22 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html lang="">
 <head>
-	<title>Divid</title>
 	<meta charset="utf-8">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<title>Divid</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="description" content="" />
+  	<meta name="keywords" content="" />
+	<meta name="robots" content="" />
+	<link rel="stylesheet" href="assets/css/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+	<script src="assets/js/jquery-2.1.3.js"></script>
 	<script type="text/javascript">
-		$(function(){
-			var players = [];
+			$(document).on('mobileinit', function () {
+		    	$.mobile.ignoreContentEnabled = true;
+			});
+			
+        	var players = [];
 			
 			if(typeof(Storage) !== "undefined") {
 		        if (localStorage.divid_players) {
@@ -22,230 +28,295 @@
 				localStorage.divid_players = JSON.stringify(players);
 			}
 			
+			function setConfiguration(){
+				localStorage.divid_config = $('#config').val();
+				$.mobile.navigate("#selecao-jogador", {  transition: "slide"  });
+			}
+			
 			function addPlayer(){
 				var player = new Object();
 				player.name = $('#tf_name').val();
-				player.position = $('#tf_position').val();
+				player.position = $('#tf_position option:selected').val();
 				player.skill = $('#tf_skill').val();
 				players.push(player);
 				$('#tf_name').val('');
 				$('#tf_position').val('');
 				$('#tf_skill').val('');
 				refreshListPlayers();
+				$.mobile.navigate("#lista-jogador", {  transition: "slide"  });
 			}
 			
-			function editPlayer(idx){
-				player = players[idx];
-				$('#tf_name').val(player.name);
-				$('#tf_position').val(player.position);
-				$('#tf_skill').val(player.skill);
-				$.mobile.loadPage("#page_player");
+			function dividPlayers(){
+				ar_position = [];
+				ar_positions_players = [];
+				ar_team = [];
+				//DIVIDIR POTS DE POSICOES E ORDENAR POR SKILL
+				players_select = [];
+				$('input.select_players:checkbox:checked').each(function () {
+					players_select.push( players[$(this).val()] );
+				});
+				
+				if(players_select.length > 0){
+					for(var i=0; i<players_select.length;i++){
+						if(typeof(ar_positions_players[players_select[i].position]) == "undefined") {
+							ar_positions_players[players_select[i].position] = [];
+						}
+						ar_positions_players[players_select[i].position].push(players_select[i]);
+						ar_positions_players[players_select[i].position] = multiSort(ar_positions_players[players_select[i].position]);
+						if( ar_position.indexOf(players_select[i].position) < 0  ){
+							ar_position.push(players_select[i].position);
+						}
+					}
+				}
+				//QTDE DE JOGADORES POR TIME
+				div = (( (typeof(Storage) !== "undefined" && localStorage.divid_config) )? localStorage.divid_config : 2);
+				//LOOP POSITION
+				if(ar_position.length > 0){
+					for(var i=0; i<ar_position.length;i++){
+						team = 0;
+						for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
+							if(typeof(ar_team[team]) == "undefined") {
+								ar_team[team] = [];
+							}
+							ar_team[team].push( ar_positions_players[ar_position[i]][j] );
+							tmp = team+1;
+							team = ( tmp >= div )? 0 : tmp;
+						}
+					}
+				}
+				
+				$('#list_team').html('');
+				if(ar_team.length > 0){
+					for(var i=0; i<ar_team.length;i++){
+						html = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';
+						if(ar_team[i].length > 0){
+							for(var j=0; j<ar_team[i].length;j++){
+								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position+'</small></li>';
+							}
+						}
+						html += '</ul></div>';
+						$('#list_team').append(html);
+					}
+				}
+				$.mobile.navigate("#equipes", {  transition: "slide"  });
 			}
 			
 			function refreshListPlayers(){
 				$('#list_players').html("");
+				$('#select_players').html("");
 				if(players.length > 0){
 					for(var i=0; i<players.length;i++){
 						$('#list_players').append(
-							"<li id=\"index-"+i+"\">"+
-								'<div class="behind"><a href="javascript: confirmAndDelete($(this).parent(\'li\'))" class="ui-btn delete-btn">Remover</a><a href="javascript: editPlayer('+i+')" class="ui-btn edit-btn pull-left">Editar</a></div>'+
-								'<a href="#"><h2 class="topic">'+players[i].name+'</h2>'+
-								'<p class="ui-li-aside">' +players[i].position+'</p>'+
+							'<li id="index-'+i+'"><div><strong>'+players[i].name+'</strong><small>' +players[i].position+'</small></div>'+
 								'<div class="nivel" data-stars="' +players[i].skill+'">'+
+								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
 							    '</div>'+
-							   
+							    '<button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>'+
 							'</li>'
 						);
+						
+						$('#select_players').append(
+							'<li>'+
+								'<div class="checkbox-jogador">'+
+									'<span>'+
+										'<input type="checkbox" class="select_players" id="players_select'+i+'" name="players_select[]" value="'+i+'">'+
+										'<label for="players_select'+i+'"></label>'+
+									'</span>'+
+								'</div>'+
+								'<div class="info">'+
+									'<div>'+
+										'<strong>'+players[i].name+'</strong><small>' +players[i].position+'</small>'+
+									'</div>'+
+									'<div class="nivel" data-stars="' +players[i].skill+'">'+
+									    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+									    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+									    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+									    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+									    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
+								    '</div>'+
+								'</div>'+
+							'</li>'
+						);
+						
 					}
 				}else{
 					$('#list_players').append('<li class="empty"><p>Nenhum jogador cadastrado</p></li>');
 				}
-				$('#list_players').listview("refresh");
 				updateLocalStorage();
+				$('#list_players > li').on('swipeleft', swipeleftHandler);
+				$('#list_players > li').on('swiperight', swiperightHandler);
+				$('.btn-remove-lista').click(removeLinha);
+				
 			}
 			
-			$('#btn_add').on('click', addPlayer);
+			function swipeleftHandler(event){
+				event.preventDefault();
+			    $(event.target).addClass('show-remove');
+			}
+			function swiperightHandler(event){
+				event.preventDefault();
+			    $(event.target).removeClass('show-remove');
+			}
+			function removeLinha() {
+			    var linha = $(this).parent();
+			    idx = $(linha).attr('id').split('-');
+				players.splice(idx[1], 1);
+				updateLocalStorage();
+			    linha.fadeOut(1000);
+			    setTimeout(function() {
+			        linha.remove();
+			    }, 1000);
+			}
 			
 			$(document).ready(function() {
-				refreshListPlayers();
-			});
 				
-			function confirmAndDelete( listitem ) {
-				listitem.children( ".ui-btn" ).addClass( "ui-btn-active" );
-				$( "#confirm .topic" ).remove();
-				$( "#confirm" ).popup( "open" );
-				$( "#confirm #cancel" ).on( "click", function() {
-					listitem.children( ".ui-btn" ).removeClass( "ui-btn-active" );
-					$( "#confirm #yes" ).off();
-				});
-				$( "#confirm #yes" ).on( "click", function() {
-					listitem.remove();
-					$( "#list_players" ).listview( "refresh" );
-					idx = $(listitem).attr('id').split('-');
-					players.splice(idx[1], 1);
-					refreshListPlayers();
-				});
-			}
+				refreshListPlayers();
+				$('#btn_add').on('click', addPlayer);
+				$('#salve_conf').on('click', setConfiguration);
+				$('#dividir').on('click', dividPlayers);
+				
+				if (typeof(Storage) !== "undefined" && localStorage.divid_config) {
+		        	$('#config').val(localStorage.divid_config);
+		        }
 			
-			function prevent_default(e) {
-		        e.preventDefault();
-		    }
-
-		    function disable_scroll() {
-		        $(document).on('touchmove', prevent_default);
-		    }
-
-		    function enable_scroll() {
-		        $(document).unbind('touchmove', prevent_default)
-		    }
-
-		    var x;
-		    $('.swipe-delete li > a')
-		        .on('touchstart', function(e) {
-		            console.log(e.originalEvent.pageX)
-		            $('.swipe-delete li > a').css('left', '0px') // close em all
-		            $(e.currentTarget).addClass('open')
-		            x = e.originalEvent.targetTouches[0].pageX // anchor point
-		        })
-		        .on('touchmove', function(e) {
-		            var change = e.originalEvent.targetTouches[0].pageX - x
-		            change = Math.min(Math.max(-100, change), 100) // restrict to -100px left, 0px right
-		            e.currentTarget.style.left = change + 'px'
-		            if (change < -10) disable_scroll() // disable scroll once we hit 10px horizontal slide
-		        })
-		        .on('touchend', function(e) {
-		            var left = parseInt(e.currentTarget.style.left)
-		            var new_left;
-		            if (left < -35) {
-		                new_left = '-100px'
-		            } else if (left > 35) {
-		                new_left = '100px'
-		            } else {
-		                new_left = '0px'
-		            }
-		            // e.currentTarget.style.left = new_left
-		            $(e.currentTarget).animate({left: new_left}, 200)
-		            enable_scroll()
-		        });
-
-		    $('li .delete-btn').on('touchend', function(e) {
-		        e.preventDefault()
-		        $(this).parents('li').slideUp('fast', function() {
-		            $(this).remove()
-		        })
-		    })
-
-		    $('li .edit-btn').on('touchend', function(e) {
-		        e.preventDefault()
-		        $(this).parents('li').children('a').html('edited')
-		    })
-		});
+				$('.star.rating').click(function(){
+					$(this).parent().attr('data-stars', $(this).data('rating'));
+					$('#tf_skill').val($(this).data('rating'));
+				});
+				
+			});
+			
 	</script>
-	<style>
-		/* Styling for the popup */
-		#confirm p {
-			text-align: center;
-			font-size: inherit;
-			margin-bottom: .75em;
-		}
-		.behind {
-	        width: 100%;
-	        height: 100%;
-	        position: absolute;
-	        top: 0;
-	        right: 0;
-	    }
-	    .behind a.ui-btn {
-	        width: 68px;
-	        margin: 0px;
-	        float: right;
-	        border: none;
-	    }
-	    .behind a.delete-btn, .behind a.delete-btn:active, .behind a.delete-btn:visited, .behind a.delete-btn:focus, .behind a.delete-btn:hover {
-	        color: white;
-	        background-color: red;
-	        text-shadow: none;
-	    }
-	    .behind a.ui-btn.pull-left {
-	        float: left;
-	    }
-	    .behind a.edit-btn, .behind a.edit-btn:active, .behind a.edit-btn:visited, .behind a.edit-btn:focus, .behind a.edit-btn:hover {
-	        color: white;
-	        background-color: orange;
-	        text-shadow: none;
-	    }
-    </style>
+	<script src="assets/js/jquery.mobile-1.4.5.js"></script>
+	<script src="assets/js/skill_sort.js"></script>
 </head>
 <body>
-	<!-- Start of "page_home" PAGE -->
-	<div id="page_home" data-role="page">
-		<div data-role="header" data-position="fixed">
+	<!-- !1 - HOME -->
+	<div data-role="page" id="lista-jogador" data-enhance="false">
+		<header data-role="header">
+			<a href="javascript:void(0)"></a>
 			<h1>Jogadores</h1>
-			<a href="#page_player" class="ui-btn-right">Add</a>
-		</div>
-		<div class="content">
-			<ul id="list_players" class="swipe-delete" data-role="listview">
-				<li class="empty"><p>Nenhum jogador cadastrado</p></li>
+			<a href="#add-jogador" data-transition="slide">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#mais" /></svg>
+			</a>
+		</header>
+		<section>
+			<ul id="list_players" class="lista-jogadores">
 			</ul>
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<h2>Divid</h2>
-			<a href="#page_config" class="ui-btn-right"> % </a>
-		</div>
-		<!-- Start Popup message -->
-		<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
-	        <p id="question">Tem certeza de que deseja excluir ?</p>
-	        <div class="ui-grid-a">
-	            <div class="ui-block-a">
-	                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Sim</a>
-	            </div>
-	            <div class="ui-block-b">
-	                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">N&atilde;o</a>
-	            </div>
-	        </div>
-		</div>
-	</div>
-	<!-- Start of "page_player" PAGE -->
-	<div id="page_player" data-role="page">
-		<div data-role="header" data-position="fixed">
-			<h1>Jogador</h1>
-			<a href="#page_home" class="ui-btn-right">Voltar</a>
-		</div>
-		<div class="ui-content">
-			<label for="tf_name">Nome:</label>
-			<input type="text" id="tf_name"  />
-			<label for="tf_position">Posi&ccedil;&atilde;o:</label>
-			<input type="text" id="tf_position" />
-			<label for="tf_skill" class="select">T&eacute;cnica:</label>
-			<select name="tf_skill" id="tf_skill">
-				<option> - selecione - </option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<a href="#page_home" id="btn_add" data-role="button">Salvar</a>
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<h2>Divid</h2>
-		</div>
-	</div>
-	<!-- Start of "page_config" PAGE -->
-	<div id="page_config" data-role="page">
-		<div data-role="header" data-position="fixed">
-			<h1>Configura&ccedil;&otilde;es</h1>
-			<a href="#page_home" class="ui-btn-right">Voltar</a>
-		</div>
-		<div class="ui-content">
-			<label for="tf_conf">Participantes por time:</label>
-			<input type="text" id="tf_conf"  />
-			<a href="#page_home" id="btn_add" data-role="button">Gerar</a>
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<h2>Divid</h2>
-		</div>
+		</section>
+		<nav>
+			<a href="#lista-jogador" class="active">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores" /></svg>
+			</a>
+			<a href="#selecao-jogador">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir" /></svg>
+			</a>
+		</nav>
 	</div>
 	
+	<!-- !2 - ADD JOGADOR -->
+	<div data-role="page" id="add-jogador" data-enhance="false">
+		<header data-role="header" data-enhance="false">
+			<a href="#lista-jogador" data-transition="slide" data-direction="reverse"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<h1>Adicionar Jogador</h1>
+			<a href="javascript:void(0)">
+			</a>
+		</header>
+		<section>
+			<div class="field">
+				<label>Nome</label>
+				<input type="text" id="tf_name" name="tf_name" value="" />
+			</div>
+			<div class="field">
+				<label>Posição</label>
+				<select id="tf_position" name="tf_position">
+					<option value="">Selecione</option>
+			        <option value="Goleiro">Goleiro</option>
+			        <option value="Zagueiro">Zagueiro</option>
+			        <option value="Lateral">Lateral</option>
+			        <option value="Meia">Meia</option>
+			        <option value="Atacante">Atacante</option>
+				</select>
+			</div>
+			<div class="field">
+				<label>Técnica</label>
+				<div>
+					<input type="hidden" id="tf_skill" name="tf_skill" value="" />
+					<div class="stars" data-stars="0">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="1">
+							<path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="2">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="3">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="4">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="5">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<button type="button" id="btn_add" data-transition="slide" data-direction="reverse">Adicionar</button>
+		</section>
+	</div>
+	
+	<!-- !4 - SELECAO DOS JOGADORES -->
+	<div data-role="page" id="selecao-jogador" data-enhance="false">
+		<header>
+			<a href="javascript:void(0)"></a>
+			<h1>Dividir equipes</h1>
+			<a href="#configuracoes" data-transition="slide"><svg class="icon"><use xlink:href="assets/img/icons.svg#config" /></svg></a>
+		</header>
+		<section>
+			<ul id="select_players" class="selecao-jogadores"></ul>
+			<button id="dividir" type="button" data-transition="slide" data-role="button">Dividir</button>
+		</section>
+		<nav>
+			<a href="#lista-jogador">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores" /></svg>
+			</a>
+			<a href="#selecao-jogador" class="active">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir" /></svg>
+			</a>
+		</nav>
+	</div>
+	
+	<!-- !5 - CONFIGURACOES -->
+	<div data-role="page" id="configuracoes" data-enhance="false">
+		<header>
+			<a href="#selecao-jogador" data-transition="slide" data-direction="reverse"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<h1>Configurações</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section>
+			<div class="field">
+				<label>Participantes por time</label>
+				<input type="number" id="config" name="config" value="" />
+			</div>
+			<button type="button" id="salve_conf" data-transition="slide" data-direction="reverse" data-role="button">Ok</button>
+		</section>
+	</div>
+	
+	<!-- !6 - EQUIPES -->
+	<div data-role="page" id="equipes" data-enhance="false">
+		<header>
+			<a href="#" data-transition="slide" data-direction="reverse" data-rel="back"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<h1>Equipes</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section>
+			<div id="list_team" class="container-times">
+			</div>		
+		</section>
+	</div>
 </body>
 </html>
