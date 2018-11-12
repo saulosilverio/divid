@@ -9,6 +9,16 @@
 	],
 "creatorBuild": "28905",
 "files": {
+	"/css/jquery.mobile.structure-1.4.5.min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/css/jquery.mobile.structure-1.4.5.min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/css/style.css": {
 		"aP": 1,
 		"bl": 0,
@@ -213,6 +223,26 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"/js/jquery-2.1.3.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/jquery-2.1.3-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/jquery.mobile-1.4.5.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/jquery.mobile-1.4.5-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/js/scripts-min.js": {
 		"ft": 64,
 		"ma": 0,
@@ -229,6 +259,26 @@
 		"mi": 1,
 		"oA": 0,
 		"oAP": "/js/scripts-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/skill_sort.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/skill_sort-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/svgxuse.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/svgxuse-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
