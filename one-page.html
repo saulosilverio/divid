@@ -17,8 +17,9 @@
             $.mobile.ignoreContentEnabled = true;
         });
     </script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>	
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>	
 	<script type="text/javascript" src="assets/js/scripts-min.js"></script>
+	<script type="text/javascript" src="assets/js/svgxuse.js"></script>
 </head>
 <body>
 	<!-- !1 - LISTA VAZIA -->
@@ -27,7 +28,7 @@
 			<a href="javascript:void(0)"></a>
 			<h1>Jogadores</h1>
 			<a href="#add-jogador" data-transition="slide">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#mais" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#mais"></use></svg>
 			</a>
 		</header>
 		<section>
@@ -35,10 +36,10 @@
 		</section>
 		<nav>
 			<a href="#lista-jogador" class="active">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores"></use></svg>
 			</a>
 			<a href="#selecao-jogador">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir"></use></svg>
 			</a>
 		</nav>
 	</div>
@@ -46,7 +47,9 @@
 	<!-- !2 - ADD JOGADOR -->
 	<div data-role="page" id="add-jogador" data-enhance="false">
 		<header data-role="header" data-enhance="false">
-			<a href="#lista-vzo" data-transition="slide" data-direction="reverse"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<a href="#lista-vzo" data-transition="slide" data-direction="reverse">
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq"></use></svg>
+			</a>
 			<h1>Adicionar Jogador</h1>
 			<a href="javascript:void(0)">
 			</a>
@@ -99,7 +102,7 @@
 			<a href="javascript:void(0)"></a>
 			<h1>Jogadores</h1>
 			<a href="#add-jogador" data-transition="slide">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#mais" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#mais"></use></svg>
 			</a>
 		</header>
 		<section class="overflow-hidden">
@@ -116,7 +119,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -130,7 +133,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -144,7 +147,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -158,7 +161,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				     <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -172,7 +175,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -186,7 +189,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -200,7 +203,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -214,7 +217,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -228,7 +231,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -242,7 +245,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -256,7 +259,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -270,7 +273,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -284,7 +287,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -298,7 +301,7 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 				<li>
 					<div>
@@ -312,16 +315,16 @@
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
 				    </div>
-				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove" /></svg></button>
+				    <button class="btn-remove-lista"><svg class="icon"><use xlink:href="assets/img/icons.svg#remove"></use></svg></button>
 				</li>
 			</ul>
 		</section>
 		<nav>
 			<a href="#lista-jogador" class="active">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores"></use></svg>
 			</a>
-			<a href="#selecao-jogador">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir" /></svg>
+			<a href="#selecao-jogador"></use>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir"></use></svg>
 			</a>
 		</nav>
 	</div>
@@ -331,7 +334,7 @@
 		<header>
 			<a href="javascript:void(0)"></a>
 			<h1>Dividir equipes</h1>
-			<a href="#configuracoes" data-transition="slide"><svg class="icon"><use xlink:href="assets/img/icons.svg#config" /></svg></a>
+			<a href="#configuracoes" data-transition="slide"><svg class="icon"><use xlink:href="assets/img/icons.svg#config"></use></svg></a>
 		</header>
 		<section>
 			<ul class="selecao-jogadores">
@@ -571,10 +574,10 @@
 		</section>
 		<nav>
 			<a href="#lista-jogador">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#jogadores"></use></svg>
 			</a>
 			<a href="#selecao-jogador" class="active">
-				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir" /></svg>
+				<svg class="icon"><use xlink:href="assets/img/icons.svg#dividir"></use></svg>
 			</a>
 		</nav>
 	</div>
@@ -582,7 +585,7 @@
 	<!-- !5 - CONFIGURACOES -->
 	<div data-role="page" id="configuracoes" data-enhance="false">
 		<header>
-			<a href="#selecao-jogador" data-transition="slide" data-direction="reverse"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<a href="#selecao-jogador" data-transition="slide" data-direction="reverse"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq"></use></svg></a>
 			<h1>Configurações</h1>
 			<a href="javascript:void(0)"></a>
 		</header>
@@ -598,7 +601,7 @@
 	<!-- !6 - EQUIPES -->
 	<div data-role="page" id="configuracoes" data-enhance="false">
 		<header>
-			<a href="#" data-transition="slide" data-direction="reverse" data-rel="back"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq" /></svg></a>
+			<a href="#" data-transition="slide" data-direction="reverse" data-rel="back"><svg class="icon"><use xlink:href="assets/img/icons.svg#seta-esq"></use></svg></a>
 			<h1>Equipes</h1>
 			<a href="javascript:void(0)"></a>
 		</header>
@@ -715,6 +718,5 @@
 			</div>		
 		</section>
 	</div>
-	<script type="text/javascript" src="assets/js/svgxuse.js"></script>
 </body>
 </html>
