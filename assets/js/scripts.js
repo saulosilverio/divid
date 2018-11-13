@@ -11,11 +11,11 @@ $(function(){
  
   function swipeleftHandler(event){
 	event.preventDefault();
-    $(event.target, this).addClass('show-remove');
+    $(event.target).addClass('show-remove');
   }
   function swiperightHandler(event){
 	event.preventDefault();
-    $(event.target, this).removeClass('show-remove');
+    $(event.target).removeClass('show-remove');
   }
 });
 
