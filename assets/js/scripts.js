@@ -11,13 +11,14 @@ $(function(){
  
   function swipeleftHandler(event){
 	event.preventDefault();
-    $(event.target).addClass('show-remove');
+    $(event.target, this).addClass('show-remove');
   }
   function swiperightHandler(event){
 	event.preventDefault();
-    $(event.target).removeClass('show-remove');
+    $(event.target, this).removeClass('show-remove');
   }
 });
+
 
 // REMOVE LINHA
 $('.btn-remove-lista').click(removeLinha);
