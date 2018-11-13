@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<title>Divid</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="description" content="" />
+  	<meta name="keywords" content="" />
+	<meta name="robots" content="" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+	
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script>
+        $(document).on('mobileinit', function () {
+            $.mobile.ignoreContentEnabled = true;
+        });
+    </script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>	
+	<script type="text/javascript" src="assets/js/scripts-min.js"></script>
+	<script type="text/javascript" src="assets/js/svgxuse.js"></script>
+</head>
+<body>
+	<!-- !1 - LISTA VAZIA -->
+	<div data-role="page" id="lista-vzo" data-enhance="false">
+		<header data-role="header">
+			<a href="javascript:void(0)"></a>
+			<h1>Jogadores</h1>
+			<a href="#add-jogador" data-transition="slide">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-mais" viewBox="0 0 22 22">
+					<path d="M10.805 11.271h10.771v-2H10.805V0h-2v9.271H.034v2h8.771v10.272h2V11.271z"></path>
+				</svg>
+			</a>
+		</header>
+		<section>
+			<div class="empty"><p>Nenhum jogador cadastrado</p></div>
+		</section>
+		<nav>
+			<a href="#lista-jogador" class="active">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-jogadores" viewBox="0 0 28 26">
+					<path d="M19.383 19.3l7.017 6.152 1.318-1.504-7.583-6.648H7.583L0 23.948l1.318 1.504L8.335 19.3zm-5.524-4.7a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6zm0-2a5.3 5.3 0 1 0 0-10.6 5.3 5.3 0 0 0 0 10.6z"></path>
+				</svg>
+			</a>
+			<a href="#selecao-jogador">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-dividir" viewBox="0 0 25 25">
+					<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
+				</svg>
+			</a>
+		</nav>
+	</div>
+	
+	<!-- !2 - ADD JOGADOR -->
+	<div data-role="page" id="add-jogador" data-enhance="false">
+		<header data-role="header" data-enhance="false">
+			<a href="#lista-vzo" data-transition="slide" data-direction="reverse">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Adicionar Jogador</h1>
+			<a href="javascript:void(0)">
+			</a>
+		</header>
+		<section>
+			<div class="field">
+				<label>Nome</label>
+				<input type="text"/>
+			</div>
+			<div class="field">
+				<label>Posição</label>
+				<select id="posicao">
+					<option>Selecione</option>
+			        <option>Goleiro</option>
+			        <option>Zagueiro</option>
+			        <option>Lateral</option>
+			        <option>Meia</option>
+			        <option>Atacante</option>
+				</select>
+			</div>
+			<div class="field">
+				<label>Técnica</label>
+				<div>
+					<div class="stars" data-stars="0">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="1">
+							<path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="2">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="3">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="4">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="5">
+						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<button type="button" data-transition="slide" data-direction="reverse" data-rel="back">Adicionar</button>
+		</section>
+	</div>
+	
+	<!-- !3 - LISTA JOGADORES POPULADA -->
+	<div data-role="page" id="lista-jogador" data-enhance="false">
+		<header>
+			<a href="javascript:void(0)"></a>
+			<h1>Jogadores</h1>
+			<a href="#add-jogador" data-transition="slide">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-mais" viewBox="0 0 22 22">
+					<path d="M10.805 11.271h10.771v-2H10.805V0h-2v9.271H.034v2h8.771v10.272h2V11.271z"></path>
+				</svg>
+			</a>
+		</header>
+		<section class="overflow-hidden">
+			<ul id="list" class="lista-jogadores">
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				     <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				     <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				     <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg></button>
+				</li>
+				<li>
+					<div>
+						<strong>Nome Jogador</strong>
+						<small>Posição</small>
+					</div>
+					<div class="nivel" data-stars="3">
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+				    </div>
+				    <button class="btn-remove-lista">
+				    	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32">
+					    	<path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/>
+				    	</svg>
+				    </button>
+				</li>
+			</ul>
+		</section>
+		<nav>
+			<a href="#lista-jogador" class="active">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-jogadores" viewBox="0 0 28 26">
+					<path d="M19.383 19.3l7.017 6.152 1.318-1.504-7.583-6.648H7.583L0 23.948l1.318 1.504L8.335 19.3zm-5.524-4.7a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6zm0-2a5.3 5.3 0 1 0 0-10.6 5.3 5.3 0 0 0 0 10.6z"></path>
+				</svg>
+			</a>
+			<a href="#selecao-jogador"></use>
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-dividir" viewBox="0 0 25 25">
+					<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
+				</svg>
+			</a>
+		</nav>
+	</div>
+	
+	<!-- !4 - SELECAO DOS JOGADORES -->
+	<div data-role="page" id="selecao-jogador" data-enhance="false">
+		<header>
+			<a href="javascript:void(0)"></a>
+			<h1>Dividir equipes</h1>
+			<a href="#configuracoes" data-transition="slide">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-config" viewBox="0 0 25 25">
+					<path d="M12.5 19.5C8.4 19.5 5 16.1 5 12s3.4-7.5 7.5-7.5S20 7.9 20 12s-3.4 7.5-7.5 7.5zM4.924 6.306a9.432 9.432 0 0 0-1.91 5.194H0v2h3.12a9.497 9.497 0 0 0 2.218 4.705L2.95 20.594l1.414 1.414L6.8 19.572a9.449 9.449 0 0 0 4.7 1.875V25h2v-3.553a9.446 9.446 0 0 0 4.654-1.84l2.437 2.436 1.415-1.414-2.382-2.381A9.5 9.5 0 0 0 21.88 13.5H25v-2h-3.013A9.43 9.43 0 0 0 20.1 6.34l1.94-1.94-1.415-1.414-1.884 1.885A9.48 9.48 0 0 0 13.5 2.553V0h-2v2.553a9.477 9.477 0 0 0-5.21 2.29L4.397 2.951 2.983 4.366l1.94 1.94z"/>
+				</svg>
+			</a>
+		</header>
+		<section>
+			<ul class="selecao-jogadores">
+				<li>
+					<label for="jogador01">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador01" name="jogador01" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador02">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador02" name="jogador02" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador03">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador03" name="jogador03" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador04">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador04" name="jogador04" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador05">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador05" name="jogador05" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador06">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador06" name="jogador06" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador07">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador07" name="jogador07" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador08">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador08" name="jogador08" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador09">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador09" name="jogador09" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+				<li>
+					<label for="jogador10">
+						<div class="checkbox-jogador">
+							<div>
+								<input type="checkbox" id="jogador10" name="jogador10" value="">
+								<span></span>
+							</div>
+						</div>
+						<div class="info">
+							<div>
+								<strong>Nome Jogador</strong>
+								<small>Posição</small>
+							</div>
+							<div class="nivel" data-stars="3">
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>
+						    </div>
+						</div>
+					</label>
+				</li>
+			</ul>
+			<button id="dividir" type="button" data-role="button">Dividir</button>
+		</section>
+		<nav>
+			<a href="#lista-jogador">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-jogadores" viewBox="0 0 28 26">
+					<path d="M19.383 19.3l7.017 6.152 1.318-1.504-7.583-6.648H7.583L0 23.948l1.318 1.504L8.335 19.3zm-5.524-4.7a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6zm0-2a5.3 5.3 0 1 0 0-10.6 5.3 5.3 0 0 0 0 10.6z"></path>
+				</svg>
+			</a>
+			<a href="#selecao-jogador" class="active">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-dividir" viewBox="0 0 25 25">
+					<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
+				</svg>
+			</a>
+		</nav>
+	</div>
+	
+	<!-- !5 - CONFIGURACOES -->
+	<div data-role="page" id="configuracoes" data-enhance="false">
+		<header>
+			<a href="#selecao-jogador" data-transition="slide" data-direction="reverse">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Configurações</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section>
+			<div class="field">
+				<label>Participantes por time</label>
+				<input type="number"/>
+			</div>
+			<button type="button" data-transition="slide" data-direction="reverse" data-rel="back">Ok</button>
+		</section>
+	</div>
+	
+	<!-- !6 - EQUIPES -->
+	<div data-role="page" id="configuracoes" data-enhance="false">
+		<header>
+			<a href="#" data-transition="slide" data-direction="reverse" data-rel="back">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Equipes</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section>
+			<div class="container-times">
+				<div class="time">
+					<strong>Time 1</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 2</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 3</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 4</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 5</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 6</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 7</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 8</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+				<div class="time">
+					<strong>Time 8</strong>
+					<ul>
+						<li><span>Nome do Jogador</span> <small>GOL</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>ZAG</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>MEI</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+						<li><span>Nome do Jogador</span> <small>ATA</small></li>
+					</ul>
+				</div>
+			</div>		
+		</section>
+	</div>
+</body>
+</html>
