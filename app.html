@@ -34,16 +34,38 @@
 			}
 			
 			function addPlayer(){
-				var player = new Object();
-				player.name = $('#tf_name').val();
-				player.position = $('#tf_position option:selected').val();
-				player.skill = $('#tf_skill').val();
-				players.push(player);
+				
+				idx = $('#id_player').val();
+				if( idx == ''){
+					var player = new Object();
+					player.name = $('#tf_name').val();
+					player.position = $('#tf_position option:selected').val();
+					player.skill = $('#tf_skill').val();
+					players.push(player);
+				}else{
+					if(players.length > 0 && typeof(players[idx]) !== "undefined" ){
+						players[idx].name = $('#tf_name').val();
+						players[idx].skill = $('#tf_skill').val();
+						players[idx].position = $('#tf_position option:selected').val();
+					}
+				}
 				$('#tf_name').val('');
 				$('#tf_position').val('');
 				$('#tf_skill').val('');
+				$('#id_player').val('');
 				refreshListPlayers();
 				$.mobile.navigate("#lista-jogador", {  transition: "slide"  });
+			}
+			
+			function editPlayer(idx){
+				if(players.length > 0 && typeof(players[idx]) !== "undefined" ){
+					$('#tf_name').val(players[idx].name);
+					$('#tf_skill').val(players[idx].skill);
+					$('#tf_position').val(players[idx].position).prop('selected', true);
+					$('#id_player').val(idx);
+					$('.stars').attr('data-stars', players[idx].skill );
+					$.mobile.navigate("#add-jogador", {  transition: "slide"  });
+				}
 			}
 			
 			function dividPlayers(){
@@ -75,27 +97,41 @@
 					for(var i=0; i<ar_position.length;i++){
 						team = 0;
 						for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
+							tmp = team+1;
+							next_team = ( tmp >= div )? 0 : tmp;
 							if(typeof(ar_team[team]) == "undefined") {
 								ar_team[team] = [];
 							}
-							ar_team[team].push( ar_positions_players[ar_position[i]][j] );
-							tmp = team+1;
-							team = ( tmp >= div )? 0 : tmp;
+							if(typeof(ar_team[next_team]) == "undefined") {
+								ar_team[next_team] = [];
+							}
+							
+							if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
+								ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
+							}else{
+								ar_team[team].push( ar_positions_players[ar_position[i]][j] );
+							}
+							team = next_team;
 						}
 					}
 				}
+				//BALANCING TEAM
+				
 				
 				$('#list_team').html('');
 				if(ar_team.length > 0){
 					for(var i=0; i<ar_team.length;i++){
-						html = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';
+						html = '';
+						sum_skill = 0;
 						if(ar_team[i].length > 0){
 							for(var j=0; j<ar_team[i].length;j++){
-								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position+'</small></li>';
+								sum_skill = sum_skill+ar_team[i][j].skill;
+								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position.substr(0, 3)+'</small></li>';
 							}
 						}
+						html_team = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';// '+(sum_skill/ar_team[i].length)+' 
 						html += '</ul></div>';
-						$('#list_team').append(html);
+						$('#list_team').append(html_team+html);
 					}
 				}
 				$.mobile.navigate("#equipes", {  transition: "slide"  });
@@ -107,14 +143,14 @@
 				if(players.length > 0){
 					for(var i=0; i<players.length;i++){
 						$('#list_players').append(
-							'<li id="index-'+i+'"><div><strong>'+players[i].name+'</strong><small>' +players[i].position+'</small></div>'+
+							'<li id="index-'+i+'"><a href="javascript: void(0)" onclick="editPlayer('+i+')"><div><strong>'+players[i].name+'</strong><small>' +players[i].position+'</small></div>'+
 								'<div class="nivel" data-stars="' +players[i].skill+'">'+
 								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
 								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
 								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
 								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
 								    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413"><path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/></svg>'+
-							    '</div>'+
+							    '</div></a>'+
 							    '<button class="btn-remove-lista"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-remove" viewBox="0 0 32 32"><path d="M17.459 16.014l8.239-8.194a.992.992 0 0 0 0-1.414 1.016 1.016 0 0 0-1.428 0l-8.232 8.187L7.73 6.284a1.009 1.009 0 0 0-1.428 0 1.015 1.015 0 0 0 0 1.432l8.302 8.303-8.332 8.286a.994.994 0 0 0 0 1.414 1.016 1.016 0 0 0 1.428 0l8.325-8.279 8.275 8.276a1.009 1.009 0 0 0 1.428 0 1.015 1.015 0 0 0 0-1.432l-8.269-8.27z"/></svg></button>'+
 							'</li>'
 						);
@@ -181,12 +217,17 @@
 			    refreshListPlayers();
 			}
 			
+            function sendEmail(){
+                window.location = "mailto:paulo.nhaia@gmail.com";
+            }
+            
 			$(document).ready(function() {
 				
 				refreshListPlayers();
 				$('#btn_add').on('click', addPlayer);
 				$('#salve_conf').on('click', setConfiguration);
 				$('#dividir').on('click', dividPlayers);
+                $('#send_mail').on('click', sendEmail);
 				
 				if (typeof(Storage) !== "undefined" && localStorage.divid_config) {
 		        	$('#config').val(localStorage.divid_config);
@@ -215,7 +256,7 @@
 				</svg>
 			</a>
 		</header>
-		<section>
+		<section class="overflow-hidden">
 			<ul id="list_players" class="lista-jogadores">
 			</ul>
 		</section>
@@ -230,6 +271,11 @@
 					<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
 				</svg>
 			</a>
+            <!-- a href="#help-app">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lifebuoy" viewBox="0 0 31 31">
+                    <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM10 16c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6zM28.937 21.359v0l-5.544-2.297c0.391-0.943 0.608-1.977 0.608-3.062s-0.216-2.119-0.608-3.062l5.544-2.297c0.685 1.651 1.063 3.46 1.063 5.359s-0.379 3.708-1.063 5.359v0zM21.359 3.063v0 0l-2.297 5.544c-0.943-0.391-1.977-0.607-3.062-0.607s-2.119 0.216-3.062 0.607l-2.297-5.544c1.651-0.684 3.46-1.063 5.359-1.063s3.708 0.379 5.359 1.063zM3.063 10.641l5.544 2.297c-0.391 0.943-0.608 1.977-0.608 3.062s0.216 2.119 0.607 3.062l-5.544 2.297c-0.685-1.651-1.063-3.46-1.063-5.359s0.379-3.708 1.063-5.359zM10.641 28.937l2.297-5.544c0.943 0.391 1.977 0.608 3.062 0.608s2.119-0.216 3.062-0.608l2.297 5.544c-1.651 0.684-3.46 1.063-5.359 1.063s-3.708-0.379-5.359-1.063z" />
+                </svg>
+            </a-->
 		</nav>
 	</div>
 	
@@ -284,7 +330,8 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" id="btn_add" data-transition="slide" data-direction="reverse">Adicionar</button>
+			<input type="hidden" id="id_player" name="id_player" value="" />
+			<button type="button" id="btn_add" data-transition="slide" data-direction="reverse">Salvar</button>
 		</section>
 	</div>
 	
@@ -353,5 +400,26 @@
 			</div>		
 		</section>
 	</div>
+    
+    <!-- !7 - HELP PAGE -->
+    <!-- div data-role="page" id="help-app" data-enhance="false">
+        <header>
+            <a href="#" data-transition="slide" data-direction="reverse" data-rel="back">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+                    <path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+                </svg>
+            </a>
+            <h1>DIVID</h1>
+            <a href="javascript:void(0)"></a>
+        </header>
+        <section>
+            <button type="button" data-transition="slide" data-direction="reverse">Enviar sugestões ou erro</button>
+            
+            <button id="send_mail" type="button" data-transition="slide" data-direction="reverse">Compartilhar aplicativo</button>
+           
+            
+        </section>
+    </div-->
+    
 </body>
 </html>
