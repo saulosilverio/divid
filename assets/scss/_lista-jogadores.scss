@@ -11,7 +11,6 @@
 		display: flex;
 		justify-content: space-between;
 		border-top: 1px solid $light-color;
-		padding: $padding-sm 0;
 		position: relative;
 		
 		-webkit-transition: all 0.2s ease-in-out;
@@ -20,7 +19,13 @@
 		&:first-child {
 			border-top: none;
 		}
-		
+		a {
+			text-decoration: none;
+			display: flex;
+			flex-grow: 1;
+			justify-content: space-between;
+			padding: $padding-sm 0;
+		}
 		&.show-remove {
 			transform: translateX(-40pt);
 			
@@ -30,6 +35,9 @@
 			.nivel {
 				margin-right: 6pt;
 			}
+		}
+		&.empty {
+			justify-content: center;
 		}
 	}
 	
