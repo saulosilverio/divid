@@ -32,4 +32,5 @@ function removeLinha() {
         linha.remove();
     }, 1000);
 }
+
     

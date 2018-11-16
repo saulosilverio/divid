@@ -106,4 +106,31 @@ button {
 			fill: $light-color;
 		}
 	}
+	
+	// valores recuperados
+	&[data-stars="1"] {
+		svg:nth-child(1) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="2"] {
+		svg:nth-child(-n+2) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="3"] {
+		svg:nth-child(-n+3) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="4"] {
+		svg:nth-child(-n+4) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="5"] {
+		svg:nth-child(-n+5) {
+			fill: $primary-color;
+		}
+	}
 }

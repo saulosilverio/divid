@@ -173,6 +173,16 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"/icons/lifebuoy.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/icons/lifebuoy.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
 	"/icons/mais.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -199,6 +209,16 @@
 		"oA": 0,
 		"oAP": "/icons/referencia.html",
 		"oF": 0
+		},
+	"/icons/seta-dir.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/icons/seta-dir.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"/icons/seta-esq.svg": {
 		"ft": 2097152,
@@ -325,6 +345,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/scss/_general.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/scss/_informacoes.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/scss/_informacoes.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
