@@ -11,6 +11,13 @@ header {
 	left: 0;
 	width: 100%;
 	z-index: 2;
+
+    /* Status bar height on iOS 10 */
+    padding-top: 38pt;
+    /* Status bar height on iOS 11.0 */
+    padding-top: constant(safe-area-inset-top);
+    /* Status bar height on iOS 11+ */
+    padding-top: env(safe-area-inset-top);
 	
 	.icon {
 		font-size: 16pt;
