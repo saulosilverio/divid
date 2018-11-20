@@ -77,7 +77,6 @@
 				$('input.select_players:checkbox:checked').each(function () {
 					players_select.push( players[$(this).val()] );
 				});
-				
 				if(players_select.length > 0){
 					for(var i=0; i<players_select.length;i++){
 						if(typeof(ar_positions_players[players_select[i].position]) == "undefined") {
@@ -94,30 +93,45 @@
 				div = (( (typeof(Storage) !== "undefined" && localStorage.divid_config) )? localStorage.divid_config : 2);
 				//LOOP POSITION
 				if(ar_position.length > 0){
+					balance_team = [];
 					for(var i=0; i<ar_position.length;i++){
-						team = 0;
-						for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
-							tmp = team+1;
-							next_team = ( tmp >= div )? 0 : tmp;
-							if(typeof(ar_team[team]) == "undefined") {
-								ar_team[team] = [];
+						if( ar_positions_players[ar_position[i]].length > 1){
+							team = 0;
+							for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
+								tmp = team+1;
+								next_team = ( tmp >= div )? 0 : tmp;
+								if(typeof(ar_team[team]) == "undefined") {
+									ar_team[team] = [];
+								}
+								if(typeof(ar_team[next_team]) == "undefined") {
+									ar_team[next_team] = [];
+								}
+								
+								if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
+									ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
+								}else{
+									ar_team[team].push( ar_positions_players[ar_position[i]][j] );
+								}
+								team = next_team;
 							}
-							if(typeof(ar_team[next_team]) == "undefined") {
-								ar_team[next_team] = [];
-							}
-							
-							if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
-								ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
-							}else{
-								ar_team[team].push( ar_positions_players[ar_position[i]][j] );
-							}
-							team = next_team;
+						}else{
+							balance_team.push( ar_positions_players[ar_position[i]][0] );
 						}
 					}
+					//BALANCING TEAM
+					balance_team = multiSort(balance_team);
+					team = 0;
+					for(var i=0; i<balance_team.length;i++){
+						tmp = team+1;
+						next_team = ( tmp >= div )? 0 : tmp;
+						if( ar_team[team].length > ar_team[next_team].length  ){
+							ar_team[next_team].push( balance_team[i] );
+						}else{
+							ar_team[team].push( balance_team[i] );
+						}
+						team = next_team;
+					}
 				}
-				//BALANCING TEAM
-				
-				
 				$('#list_team').html('');
 				if(ar_team.length > 0){
 					for(var i=0; i<ar_team.length;i++){
@@ -125,11 +139,11 @@
 						sum_skill = 0;
 						if(ar_team[i].length > 0){
 							for(var j=0; j<ar_team[i].length;j++){
-								sum_skill = sum_skill+ar_team[i][j].skill;
+								sum_skill = sum_skill+parseInt(ar_team[i][j].skill);
 								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position.substr(0, 3)+'</small></li>';
 							}
 						}
-						html_team = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';// '+(sum_skill/ar_team[i].length)+' 
+						html_team = '<div class="time"><strong>Time '+(i+1)+' </strong><ul>';// ' '+parseInt(sum_skill/ar_team[i].length)+
 						html += '</ul></div>';
 						$('#list_team').append(html_team+html);
 					}
@@ -373,7 +387,13 @@
 				</svg>
 			</a>
 			<h1>Configurações</h1>
-			<a href="javascript:void(0)"></a>
+			<a href="#informacoes" data-transition="slide">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sobre" viewBox="0 0 26 4">
+				  <path d="M0 0h4v4H0z"/>
+				  <path d="M11 0h4v4h-4z"/>
+				  <path d="M22 0h4v4h-4z"/>
+				</svg>
+			</a>
 		</header>
 		<section>
 			<div class="field">
@@ -401,25 +421,98 @@
 		</section>
 	</div>
     
-    <!-- !7 - HELP PAGE -->
-    <!-- div data-role="page" id="help-app" data-enhance="false">
-        <header>
-            <a href="#" data-transition="slide" data-direction="reverse" data-rel="back">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
-                    <path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
-                </svg>
-            </a>
-            <h1>DIVID</h1>
-            <a href="javascript:void(0)"></a>
-        </header>
-        <section>
-            <button type="button" data-transition="slide" data-direction="reverse">Enviar sugestões ou erro</button>
-            
-            <button id="send_mail" type="button" data-transition="slide" data-direction="reverse">Compartilhar aplicativo</button>
-           
-            
-        </section>
-    </div-->
+   <!-- !7 - INFORMACOES -->
+	<div data-role="page" id="informacoes" data-enhance="false">
+		<header data-role="header">
+			<a href="#configuracoes" data-transition="slide" data-direction="reverse">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Informações</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section>
+			<ul class="lista-links">
+				<li>
+					<a href="#sobre" data-transition="slide">Sobre <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
+				</li>
+				<li>
+					<a href="#privacidade" data-transition="slide">Privacidade <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
+				</li>
+				<li>
+					<a href="mailto:saulossilverio@gmail.com,paulo.nhaia@gmail.com?Subject=Dúvidas%20e%20Sugestões">Suporte <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
+				</li>
+			</ul>
+		</section>
+	</div>
+	
+	<!-- !8 - PRIVACIDADE -->
+	<div data-role="page" id="privacidade" data-enhance="false">
+		<header data-role="header">
+			<a href="#informacoes" data-transition="slide" data-direction="reverse">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Privacidade</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section class="texto-info">
+			<h1>Política de Privacidade</h1>
+			<p>Paulo Nhaia e Saulo Silverio construíram o aplicativo DIVID como um aplicativo gratuito. Este serviço é fornecido gratuitamente por Paulo Nhaia e Saulo Silverio e destina-se a ser utilizado como está.</p>
+			<p>Esta página é usada para informar os visitantes sobre minhas políticas com a coleta, uso e divulgação de Informações Pessoais, caso alguém decida usar o meu Serviço.</p>
+			<p>Se você optar por usar o meu Serviço, você concorda com a coleta e uso de informações em relação a esta política. As Informações Pessoais que eu coleciono são usadas para fornecer e melhorar o Serviço. Não usarei nem compartilharei suas informações com ninguém, exceto conforme descrito nesta Política de Privacidade.</p>
+			<p>Os termos usados ​​nesta Política de Privacidade têm os mesmos significados que os nossos Termos e Condições, que estão acessíveis no DIVID, a menos que definido de outra forma nesta Política de Privacidade.</p>
+			
+			<h1>Coleta e Uso de Informação</h1>
+			<p>Para uma melhor experiência, ao usar nosso Serviço, eu posso exigir que você nos forneça certas informações pessoalmente identificáveis. As informações que eu solicito serão mantidas no seu dispositivo e não serão coletadas por mim de nenhuma maneira.</p>
+			
+			<h1>Log Data</h1>
+			<p>Quero informá-lo que sempre que você usar o meu serviço, em caso de erro no aplicativo eu coletar dados e informações (através de produtos de terceiros) em seu telefone chamado Log Data. Esses dados de registro podem incluir informações como o endereço IP do dispositivo, o nome do dispositivo, a versão do sistema operacional, a configuração do aplicativo ao utilizar meu serviço, a hora e a data do seu uso do Serviço e outras estatísticas.</p>
+			
+			<h1>Cookies</h1>
+			<p>Cookies são arquivos com uma pequena quantidade de dados que são comumente usados ​​como identificadores exclusivos anônimos. Estes são enviados para o seu navegador a partir dos sites que você visita e são armazenados na memória interna do seu dispositivo.</p>
+			<p>Este serviço não usa esses “cookies” explicitamente. No entanto, o aplicativo pode usar código de terceiros e bibliotecas que usam "cookies" para coletar informações e melhorar seus serviços. Você tem a opção de aceitar ou recusar esses cookies e saber quando um cookie está sendo enviado para o seu dispositivo. Se você optar por recusar nossos cookies, talvez não consiga usar algumas partes deste Serviço.</p>
+			
+			<h1>Provedores de serviço</h1>
+			<p>Eu posso empregar empresas e indivíduos de terceiros devido às seguintes razões:</p>
+			<p>Para facilitar o nosso serviço;</p>
+			<p>Para fornecer o serviço em nosso nome;</p>
+			<p>Para executar serviços relacionados a serviços; ou</p>
+			<p>Para nos ajudar a analisar como nosso Serviço é usado.</p>
+			<p>Quero informar aos usuários deste Serviço que esses terceiros têm acesso às suas informações pessoais. O motivo é executar as tarefas atribuídas a eles em nosso nome. No entanto, eles são obrigados a não divulgar ou usar as informações para qualquer outra finalidade.</p>
+			
+			<h1>Segurança</h1>
+			<p>Eu valorizo ​​sua confiança em nos fornecer suas Informações Pessoais, por isso estamos nos esforçando para usar meios comercialmente aceitáveis ​​de protegê-los. Mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro e confiável, e não posso garantir sua segurança absoluta.</p>
+			
+			<h1>Links para outros sites</h1>
+			<p>Este Serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será direcionado para esse site. Observe que esses sites externos não são operados por mim. Portanto, aconselho vivamente que você revise a Política de Privacidade desses sites. Não tenho controle e não me responsabilizo pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros.</p>
+
+			<h1>Alterações a esta política de privacidade</h1>
+			<p>Eu posso atualizar nossa Política de Privacidade de tempos em tempos. Assim, aconselhamos que você revise esta página periodicamente para quaisquer alterações. Vou notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Estas alterações entram em vigor imediatamente após serem publicadas nesta página.</p>
+
+			<h1>Contate-Nos</h1>
+			<p>Se você tiver dúvidas ou sugestões sobre minha Política de Privacidade, não hesite em entrar em contato comigo.</p>
+		</section>
+	</div>
+    
+    <!-- !9 - SOBRE -->
+	<div data-role="page" id="sobre" data-enhance="false">
+		<header data-role="header">
+			<a href="#informacoes" data-transition="slide" data-direction="reverse">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+				</svg>
+			</a>
+			<h1>Privacidade</h1>
+			<a href="javascript:void(0)"></a>
+		</header>
+		<section class="texto-info">
+    		<h1>Sobre</h1>
+			<p>DIVID é uma aplicação web simples que pode ser usada para gerenciar times e dividir de acordo com o nivel de cada jogador.</p>
+    	</section>
+	</div>
     
 </body>
 </html>
