@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Divid</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="description" content="" />
   	<meta name="keywords" content="" />
 	<meta name="robots" content="" />
@@ -77,6 +77,7 @@
 				$('input.select_players:checkbox:checked').each(function () {
 					players_select.push( players[$(this).val()] );
 				});
+				
 				if(players_select.length > 0){
 					for(var i=0; i<players_select.length;i++){
 						if(typeof(ar_positions_players[players_select[i].position]) == "undefined") {
@@ -93,45 +94,30 @@
 				div = (( (typeof(Storage) !== "undefined" && localStorage.divid_config) )? localStorage.divid_config : 2);
 				//LOOP POSITION
 				if(ar_position.length > 0){
-					balance_team = [];
 					for(var i=0; i<ar_position.length;i++){
-						if( ar_positions_players[ar_position[i]].length > 1){
-							team = 0;
-							for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
-								tmp = team+1;
-								next_team = ( tmp >= div )? 0 : tmp;
-								if(typeof(ar_team[team]) == "undefined") {
-									ar_team[team] = [];
-								}
-								if(typeof(ar_team[next_team]) == "undefined") {
-									ar_team[next_team] = [];
-								}
-								
-								if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
-									ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
-								}else{
-									ar_team[team].push( ar_positions_players[ar_position[i]][j] );
-								}
-								team = next_team;
+						team = 0;
+						for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
+							tmp = team+1;
+							next_team = ( tmp >= div )? 0 : tmp;
+							if(typeof(ar_team[team]) == "undefined") {
+								ar_team[team] = [];
 							}
-						}else{
-							balance_team.push( ar_positions_players[ar_position[i]][0] );
+							if(typeof(ar_team[next_team]) == "undefined") {
+								ar_team[next_team] = [];
+							}
+							
+							if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
+								ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
+							}else{
+								ar_team[team].push( ar_positions_players[ar_position[i]][j] );
+							}
+							team = next_team;
 						}
-					}
-					//BALANCING TEAM
-					balance_team = multiSort(balance_team);
-					team = 0;
-					for(var i=0; i<balance_team.length;i++){
-						tmp = team+1;
-						next_team = ( tmp >= div )? 0 : tmp;
-						if( ar_team[team].length > ar_team[next_team].length  ){
-							ar_team[next_team].push( balance_team[i] );
-						}else{
-							ar_team[team].push( balance_team[i] );
-						}
-						team = next_team;
 					}
 				}
+				//BALANCING TEAM
+				
+				
 				$('#list_team').html('');
 				if(ar_team.length > 0){
 					for(var i=0; i<ar_team.length;i++){
@@ -139,11 +125,11 @@
 						sum_skill = 0;
 						if(ar_team[i].length > 0){
 							for(var j=0; j<ar_team[i].length;j++){
-								sum_skill = sum_skill+parseInt(ar_team[i][j].skill);
+								sum_skill = sum_skill+ar_team[i][j].skill;
 								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position.substr(0, 3)+'</small></li>';
 							}
 						}
-						html_team = '<div class="time"><strong>Time '+(i+1)+' </strong><ul>';// ' '+parseInt(sum_skill/ar_team[i].length)+
+						html_team = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';// '+(sum_skill/ar_team[i].length)+' 
 						html += '</ul></div>';
 						$('#list_team').append(html_team+html);
 					}
@@ -261,7 +247,7 @@
 <body>
 	<!-- !1 - HOME -->
 	<div data-role="page" id="lista-jogador" data-enhance="false">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<a href="javascript:void(0)"></a>
 			<h1>Jogadores</h1>
 			<a href="#add-jogador" data-transition="slide">
@@ -270,9 +256,11 @@
 				</svg>
 			</a>
 		</header>
-		<section class="overflow-hidden">
-			<ul id="list_players" class="lista-jogadores">
-			</ul>
+		<section>
+            <div class="conteudo">
+                <ul id="list_players" class="lista-jogadores">
+                </ul>
+            </div>
 		</section>
 		<nav>
 			<a href="#lista-jogador" class="active">
@@ -285,17 +273,12 @@
 					<path d="M1.414 24.214l22.8-22.8L22.8 0 0 22.8zm4.393-13.707a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm12.6 14.6a4.7 4.7 0 1 1 0-9.4 4.7 4.7 0 0 1 0 9.4zm0-2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"></path>
 				</svg>
 			</a>
-            <!-- a href="#help-app">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lifebuoy" viewBox="0 0 31 31">
-                    <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM10 16c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6zM28.937 21.359v0l-5.544-2.297c0.391-0.943 0.608-1.977 0.608-3.062s-0.216-2.119-0.608-3.062l5.544-2.297c0.685 1.651 1.063 3.46 1.063 5.359s-0.379 3.708-1.063 5.359v0zM21.359 3.063v0 0l-2.297 5.544c-0.943-0.391-1.977-0.607-3.062-0.607s-2.119 0.216-3.062 0.607l-2.297-5.544c1.651-0.684 3.46-1.063 5.359-1.063s3.708 0.379 5.359 1.063zM3.063 10.641l5.544 2.297c-0.391 0.943-0.608 1.977-0.608 3.062s0.216 2.119 0.607 3.062l-5.544 2.297c-0.685-1.651-1.063-3.46-1.063-5.359s0.379-3.708 1.063-5.359zM10.641 28.937l2.297-5.544c0.943 0.391 1.977 0.608 3.062 0.608s2.119-0.216 3.062-0.608l2.297 5.544c-1.651 0.684-3.46 1.063-5.359 1.063s-3.708-0.379-5.359-1.063z" />
-                </svg>
-            </a-->
 		</nav>
 	</div>
 	
 	<!-- !2 - ADD JOGADOR -->
 	<div data-role="page" id="add-jogador" data-enhance="false">
-		<header data-role="header" data-enhance="false">
+		<header data-role="header" data-position="fixed">
 			<a href="#lista-jogador" data-transition="slide" data-direction="reverse">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
 					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
@@ -305,53 +288,55 @@
 			<a href="javascript:void(0)">
 			</a>
 		</header>
-		<section>
-			<div class="field">
-				<label>Nome</label>
-				<input type="text" id="tf_name" name="tf_name" value="" />
-			</div>
-			<div class="field">
-				<label>Posição</label>
-				<select id="tf_position" name="tf_position">
-					<option value="">Selecione</option>
-			        <option value="Goleiro">Goleiro</option>
-			        <option value="Zagueiro">Zagueiro</option>
-			        <option value="Lateral">Lateral</option>
-			        <option value="Meia">Meia</option>
-			        <option value="Atacante">Atacante</option>
-				</select>
-			</div>
-			<div class="field">
-				<label>Técnica</label>
-				<div>
-					<input type="hidden" id="tf_skill" name="tf_skill" value="" />
-					<div class="stars" data-stars="0">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="1">
-							<path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
-						</svg>
-					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="2">
-						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
-						</svg>
-					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="3">
-						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
-						</svg>
-					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="4">
-						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
-						</svg>
-					    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="5">
-						    <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
-						</svg>
-					</div>
-				</div>
-			</div>
-			<input type="hidden" id="id_player" name="id_player" value="" />
-			<button type="button" id="btn_add" data-transition="slide" data-direction="reverse">Salvar</button>
+		<section class="n-tabbar">
+            <div class="conteudo">
+                <div class="field">
+                    <label>Nome</label>
+                    <input type="text" id="tf_name" name="tf_name" value="" />
+                </div>
+                <div class="field">
+                    <label>Posição</label>
+                    <select id="tf_position" name="tf_position">
+                        <option value="">Selecione</option>
+                        <option value="Goleiro">Goleiro</option>
+                        <option value="Zagueiro">Zagueiro</option>
+                        <option value="Lateral">Lateral</option>
+                        <option value="Meia">Meia</option>
+                        <option value="Atacante">Atacante</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Técnica</label>
+                    <div>
+                        <input type="hidden" id="tf_skill" name="tf_skill" value="" />
+                        <div class="stars" data-stars="0">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="1">
+                                <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="2">
+                                <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="3">
+                                <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="4">
+                                <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11.413" class="star rating" data-rating="5">
+                                <path d="M6 9.008l-3.708 2.405 1.141-4.27L0 4.359l4.413-.234L6 0l1.587 4.125L12 4.359 8.567 7.143l1.141 4.27z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="id_player" name="id_player" value="" />
+                <button type="button" id="btn_add" data-transition="slide" data-direction="reverse">Salvar</button>
+            </div>
 		</section>
 	</div>
 	
 	<!-- !4 - SELECAO DOS JOGADORES -->
 	<div data-role="page" id="selecao-jogador" data-enhance="false">
-		<header>
+		<header data-role="header" data-position="fixed">
 			<a href="javascript:void(0)"></a>
 			<h1>Dividir equipes</h1>
 			<a href="#configuracoes" data-transition="slide">
@@ -361,8 +346,10 @@
 			</a>
 		</header>
 		<section>
-			<ul id="select_players" class="selecao-jogadores"></ul>
-			<button id="dividir" type="button" data-transition="slide" data-role="button">Dividir</button>
+            <div class="conteudo">
+                <ul id="select_players" class="selecao-jogadores"></ul>
+                <button id="dividir" type="button" data-transition="slide" data-role="button">Dividir</button>
+            </div>
 		</section>
 		<nav>
 			<a href="#lista-jogador">
@@ -380,33 +367,35 @@
 	
 	<!-- !5 - CONFIGURACOES -->
 	<div data-role="page" id="configuracoes" data-enhance="false">
-		<header>
+		<header data-role="header" data-position="fixed">
 			<a href="#selecao-jogador" data-transition="slide" data-direction="reverse">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
 					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
 				</svg>
 			</a>
 			<h1>Configurações</h1>
-			<a href="#informacoes" data-transition="slide">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sobre" viewBox="0 0 26 4">
-				  <path d="M0 0h4v4H0z"/>
-				  <path d="M11 0h4v4h-4z"/>
-				  <path d="M22 0h4v4h-4z"/>
-				</svg>
-			</a>
+            <a href="#informacoes" data-transition="slide">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sobre" viewBox="0 0 26 4">
+                    <path d="M0 0h4v4H0z"/>
+                    <path d="M11 0h4v4h-4z"/>
+                    <path d="M22 0h4v4h-4z"/>
+                </svg>
+            </a>
 		</header>
-		<section>
-			<div class="field">
-				<label>Quantidade de times</label>
-				<input type="number" id="config" name="config" value="" />
-			</div>
-			<button type="button" id="salve_conf" data-transition="slide" data-direction="reverse" data-role="button">Ok</button>
+		<section class="n-tabbar">
+            <div class="conteudo">
+                <div class="field">
+                    <label>Quantidade de times</label>
+                    <input type="number" id="config" name="config" value="" />
+                </div>
+                <button type="button" id="salve_conf" data-transition="slide" data-direction="reverse" data-role="button">Ok</button>
+            </div>
 		</section>
 	</div>
 	
 	<!-- !6 - EQUIPES -->
 	<div data-role="page" id="equipes" data-enhance="false">
-		<header>
+		<header data-role="header" data-position="fixed">
 			<a href="#" data-transition="slide" data-direction="reverse" data-rel="back">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
 					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
@@ -415,104 +404,95 @@
 			<h1>Equipes</h1>
 			<a href="javascript:void(0)"></a>
 		</header>
-		<section>
-			<div id="list_team" class="container-times">
-			</div>		
+		<section class="n-tabbar">
+            <div class="conteudo">
+                <div id="list_team" class="container-times">
+                </div>
+            </div>
 		</section>
 	</div>
     
-   <!-- !7 - INFORMACOES -->
-	<div data-role="page" id="informacoes" data-enhance="false">
-		<header data-role="header">
-			<a href="#configuracoes" data-transition="slide" data-direction="reverse">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
-					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
-				</svg>
-			</a>
-			<h1>Informações</h1>
-			<a href="javascript:void(0)"></a>
-		</header>
-		<section>
-			<ul class="lista-links">
-				<li>
-					<a href="#sobre" data-transition="slide">Sobre <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
-				</li>
-				<li>
-					<a href="#privacidade" data-transition="slide">Privacidade <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
-				</li>
-				<li>
-					<a href="mailto:saulossilverio@gmail.com,paulo.nhaia@gmail.com?Subject=Dúvidas%20e%20Sugestões">Suporte <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
-				</li>
-			</ul>
-		</section>
-	</div>
-	
-	<!-- !8 - PRIVACIDADE -->
-	<div data-role="page" id="privacidade" data-enhance="false">
-		<header data-role="header">
-			<a href="#informacoes" data-transition="slide" data-direction="reverse">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
-					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
-				</svg>
-			</a>
-			<h1>Privacidade</h1>
-			<a href="javascript:void(0)"></a>
-		</header>
-		<section class="texto-info">
-			<h1>Política de Privacidade</h1>
-			<p>Paulo Nhaia e Saulo Silverio construíram o aplicativo DIVID como um aplicativo gratuito. Este serviço é fornecido gratuitamente por Paulo Nhaia e Saulo Silverio e destina-se a ser utilizado como está.</p>
-			<p>Esta página é usada para informar os visitantes sobre minhas políticas com a coleta, uso e divulgação de Informações Pessoais, caso alguém decida usar o meu Serviço.</p>
-			<p>Se você optar por usar o meu Serviço, você concorda com a coleta e uso de informações em relação a esta política. As Informações Pessoais que eu coleciono são usadas para fornecer e melhorar o Serviço. Não usarei nem compartilharei suas informações com ninguém, exceto conforme descrito nesta Política de Privacidade.</p>
-			<p>Os termos usados ​​nesta Política de Privacidade têm os mesmos significados que os nossos Termos e Condições, que estão acessíveis no DIVID, a menos que definido de outra forma nesta Política de Privacidade.</p>
-			
-			<h1>Coleta e Uso de Informação</h1>
-			<p>Para uma melhor experiência, ao usar nosso Serviço, eu posso exigir que você nos forneça certas informações pessoalmente identificáveis. As informações que eu solicito serão mantidas no seu dispositivo e não serão coletadas por mim de nenhuma maneira.</p>
-			
-			<h1>Log Data</h1>
-			<p>Quero informá-lo que sempre que você usar o meu serviço, em caso de erro no aplicativo eu coletar dados e informações (através de produtos de terceiros) em seu telefone chamado Log Data. Esses dados de registro podem incluir informações como o endereço IP do dispositivo, o nome do dispositivo, a versão do sistema operacional, a configuração do aplicativo ao utilizar meu serviço, a hora e a data do seu uso do Serviço e outras estatísticas.</p>
-			
-			<h1>Cookies</h1>
-			<p>Cookies são arquivos com uma pequena quantidade de dados que são comumente usados ​​como identificadores exclusivos anônimos. Estes são enviados para o seu navegador a partir dos sites que você visita e são armazenados na memória interna do seu dispositivo.</p>
-			<p>Este serviço não usa esses “cookies” explicitamente. No entanto, o aplicativo pode usar código de terceiros e bibliotecas que usam "cookies" para coletar informações e melhorar seus serviços. Você tem a opção de aceitar ou recusar esses cookies e saber quando um cookie está sendo enviado para o seu dispositivo. Se você optar por recusar nossos cookies, talvez não consiga usar algumas partes deste Serviço.</p>
-			
-			<h1>Provedores de serviço</h1>
-			<p>Eu posso empregar empresas e indivíduos de terceiros devido às seguintes razões:</p>
-			<p>Para facilitar o nosso serviço;</p>
-			<p>Para fornecer o serviço em nosso nome;</p>
-			<p>Para executar serviços relacionados a serviços; ou</p>
-			<p>Para nos ajudar a analisar como nosso Serviço é usado.</p>
-			<p>Quero informar aos usuários deste Serviço que esses terceiros têm acesso às suas informações pessoais. O motivo é executar as tarefas atribuídas a eles em nosso nome. No entanto, eles são obrigados a não divulgar ou usar as informações para qualquer outra finalidade.</p>
-			
-			<h1>Segurança</h1>
-			<p>Eu valorizo ​​sua confiança em nos fornecer suas Informações Pessoais, por isso estamos nos esforçando para usar meios comercialmente aceitáveis ​​de protegê-los. Mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro e confiável, e não posso garantir sua segurança absoluta.</p>
-			
-			<h1>Links para outros sites</h1>
-			<p>Este Serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será direcionado para esse site. Observe que esses sites externos não são operados por mim. Portanto, aconselho vivamente que você revise a Política de Privacidade desses sites. Não tenho controle e não me responsabilizo pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros.</p>
-
-			<h1>Alterações a esta política de privacidade</h1>
-			<p>Eu posso atualizar nossa Política de Privacidade de tempos em tempos. Assim, aconselhamos que você revise esta página periodicamente para quaisquer alterações. Vou notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Estas alterações entram em vigor imediatamente após serem publicadas nesta página.</p>
-
-			<h1>Contate-Nos</h1>
-			<p>Se você tiver dúvidas ou sugestões sobre minha Política de Privacidade, não hesite em entrar em contato comigo.</p>
-		</section>
-	</div>
+    <!-- !7 - INFORMACOES -->
+    <div data-role="page" id="informacoes" data-enhance="false">
+        <header data-role="header" data-position="fixed">
+            <a href="#configuracoes" data-transition="slide" data-direction="reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+                    <path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+                </svg>
+            </a>
+            <h1>Informações</h1>
+            <a href="javascript:void(0)"></a>
+        </header>
+        <section class="n-tabbar">
+            <div class="conteudo">
+                <ul class="lista-links">
+                    <li>
+                        <a href="#privacidade" data-transition="slide">
+                            Sobre <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#privacidade" data-transition="slide">Privacidade <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
+                    </li>
+                    <li>
+                        <a href="mailto:saulossilverio@gmail.com?Subject=Dúvidas%20e%20Sugestões">Suporte <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-ir" viewBox="0 0 28 20"><path d="M23.816 9.011l-7.668-7.59 1.406-1.42L28 10.337l-10.473 9.61-1.352-1.474 8.134-7.463H.65v-2z"/></svg></span></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
     
-    <!-- !9 - SOBRE -->
-	<div data-role="page" id="sobre" data-enhance="false">
-		<header data-role="header">
-			<a href="#informacoes" data-transition="slide" data-direction="reverse">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
-					<path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
-				</svg>
-			</a>
-			<h1>Privacidade</h1>
-			<a href="javascript:void(0)"></a>
-		</header>
-		<section class="texto-info">
-    		<h1>Sobre</h1>
-			<p>DIVID é uma aplicação web simples que pode ser usada para gerenciar times e dividir de acordo com o nivel de cada jogador.</p>
-    	</section>
-	</div>
+    <!-- !8 - PRIVACIDADE -->
+    <div data-role="page" id="privacidade" data-enhance="false">
+        <header data-role="header" data-position="fixed">
+            <a href="#informacoes" data-transition="slide" data-direction="reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-voltar" viewBox="0 0 28 20">
+                    <path d="M4.184 9.011l7.668-7.59-1.406-1.42L0 10.337l10.473 9.61 1.352-1.474-8.134-7.463H27.35v-2H4.184z"></path>
+                </svg>
+            </a>
+            <h1>Privacidade</h1>
+            <a href="javascript:void(0)"></a>
+        </header>
+        <section class="texto-info n-tabbar">
+            <div class="conteudo">
+                <h1>Política de Privacidade</h1>
+                <p>Paulo Nhaia e Saulo Silverio construíram o aplicativo DIVID como um aplicativo gratuito. Este serviço é fornecido gratuitamente por Paulo Nhaia e Saulo Silverio e destina-se a ser utilizado como está.</p>
+                <p>Esta página é usada para informar os visitantes sobre minhas políticas com a coleta, uso e divulgação de Informações Pessoais, caso alguém decida usar o meu Serviço.</p>
+                <p>Se você optar por usar o meu Serviço, você concorda com a coleta e uso de informações em relação a esta política. As Informações Pessoais que eu coleciono são usadas para fornecer e melhorar o Serviço. Não usarei nem compartilharei suas informações com ninguém, exceto conforme descrito nesta Política de Privacidade.</p>
+                <p>Os termos usados ​​nesta Política de Privacidade têm os mesmos significados que os nossos Termos e Condições, que estão acessíveis no DIVID, a menos que definido de outra forma nesta Política de Privacidade.</p>
+                
+                <h2>Coleta e Uso de Informação</h2>
+                <p>Para uma melhor experiência, ao usar nosso Serviço, eu posso exigir que você nos forneça certas informações pessoalmente identificáveis. As informações que eu solicito serão mantidas no seu dispositivo e não serão coletadas por mim de nenhuma maneira.</p>
+                
+                <h2>Log Data</h2>
+                <p>Quero informá-lo que sempre que você usar o meu serviço, em caso de erro no aplicativo eu coletar dados e informações (através de produtos de terceiros) em seu telefone chamado Log Data. Esses dados de registro podem incluir informações como o endereço IP do dispositivo, o nome do dispositivo, a versão do sistema operacional, a configuração do aplicativo ao utilizar meu serviço, a hora e a data do seu uso do Serviço e outras estatísticas.</p>
+                
+                <h2>Cookies</h2>
+                <p>Cookies são arquivos com uma pequena quantidade de dados que são comumente usados ​​como identificadores exclusivos anônimos. Estes são enviados para o seu navegador a partir dos sites que você visita e são armazenados na memória interna do seu dispositivo.</p>
+                <p>Este serviço não usa esses “cookies” explicitamente. No entanto, o aplicativo pode usar código de terceiros e bibliotecas que usam "cookies" para coletar informações e melhorar seus serviços. Você tem a opção de aceitar ou recusar esses cookies e saber quando um cookie está sendo enviado para o seu dispositivo. Se você optar por recusar nossos cookies, talvez não consiga usar algumas partes deste Serviço.</p>
+                
+                <h2>Provedores de serviço</h2>
+                <p>Eu posso empregar empresas e indivíduos de terceiros devido às seguintes razões:</p>
+                <p>Para facilitar o nosso serviço;</p>
+                <p>Para fornecer o serviço em nosso nome;</p>
+                <p>Para executar serviços relacionados a serviços; ou</p>
+                <p>Para nos ajudar a analisar como nosso Serviço é usado.</p>
+                <p>Quero informar aos usuários deste Serviço que esses terceiros têm acesso às suas informações pessoais. O motivo é executar as tarefas atribuídas a eles em nosso nome. No entanto, eles são obrigados a não divulgar ou usar as informações para qualquer outra finalidade.</p>
+                
+                <h2>Segurança</h2>
+                <p>Eu valorizo ​​sua confiança em nos fornecer suas Informações Pessoais, por isso estamos nos esforçando para usar meios comercialmente aceitáveis ​​de protegê-los. Mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro e confiável, e não posso garantir sua segurança absoluta.</p>
+                
+                <h2>Links para outros sites</h2>
+                <p>Este Serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será direcionado para esse site. Observe que esses sites externos não são operados por mim. Portanto, aconselho vivamente que você revise a Política de Privacidade desses sites. Não tenho controle e não me responsabilizo pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros.</p>
+                
+                <h2>Alterações a esta política de privacidade</h2>
+                <p>Eu posso atualizar nossa Política de Privacidade de tempos em tempos. Assim, aconselhamos que você revise esta página periodicamente para quaisquer alterações. Vou notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Estas alterações entram em vigor imediatamente após serem publicadas nesta página.</p>
+                
+                <h2>Contate-Nos</h2>
+                <p>Se você tiver dúvidas ou sugestões sobre minha Política de Privacidade, não hesite em entrar em contato comigo.</p>
+            </div>
+        </section>
+    </div>
     
 </body>
 </html>
