@@ -17,11 +17,30 @@
 	}
 }
 .texto-info {
-	color: darken($gray-color, 30%);
+	color: $primary-color;
 	font-size: 13pt;
 	line-height: 1.8;
 	
+	h1, h2, h3 {
+		font-weight: normal;
+		margin-top: 24pt;
+		margin-bottom: 8pt;
+	}	
+	
+	h1 {
+		font-size: 16pt;
+	}
+	
+	h2 {
+		font-size: 14pt;
+	}
+	
+	h3 {
+		font-size: 13pt;
+	}
+	
 	p {
+		color: darken($gray-color, 30%);
 		margin-bottom: 12pt;
 	}
 }
