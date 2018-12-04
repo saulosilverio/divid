@@ -1,0 +1,136 @@
+.field {
+	margin-bottom: 18pt;
+	width: 100%;
+}
+label {
+	display: block;
+	color: $gray-color;
+	font-size: 12pt;
+}
+input,
+select {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	background: none;
+	color: $primary-color;
+	display: block;
+	border-radius: 0;
+	font-size: 14pt;
+	font-weight: 500;
+	border: none;
+	border-bottom: 1px solid $light-color;
+	padding: 8pt 0;
+	width: 100%;
+	outline: none;
+}
+
+button {
+	background: none;
+	border: 2pt solid $primary-color;
+	color: $primary-color;
+	border-radius: 20pt;
+	font-size: 14pt;
+	font-weight: 600;
+	height: 40pt;
+	margin-top: 8pt;
+	text-align: center;
+	width: 100%;
+}
+
+.stars {
+	cursor: pointer;
+	display: flex;
+	font-size: 28pt;
+	padding: 8pt 0 0 0;
+	
+	.star {
+		padding-right: 14pt;
+	}
+	
+	&:hover {
+		.star {
+			fill: $primary-color !important;
+		}
+	}
+	
+	svg {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		stroke-width: 0;
+		stroke: currentColor;
+		fill: currentColor;
+	}
+		
+	.star {
+		fill: $light-color;
+	
+		&:hover ~ .star {
+			fill: $light-color !important;
+		}
+	}
+	
+	&[data-stars] {
+		.star {
+			fill: $light-color;
+		}
+	}
+	
+	&[data-stars="1"] {
+		.star:nth-child(1) ~ .star {
+			fill: $light-color;
+		}
+	}
+	
+	&[data-stars="2"] {
+		.star:nth-child(2) ~ .star {
+			fill: $light-color;
+		}
+	}
+	
+	&[data-stars="3"] {
+		.star:nth-child(3) ~ .star {
+			fill: $light-color;
+		}
+	}
+	
+	&[data-stars="4"] {
+		.star:nth-child(4) ~ .star {
+			fill: $light-color;
+		}
+	}
+	
+	&[data-stars="5"] {
+		.star:nth-child(5) ~ .star {
+			fill: $light-color;
+		}
+	}
+	
+	// valores recuperados
+	&[data-stars="1"] {
+		svg:nth-child(1) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="2"] {
+		svg:nth-child(-n+2) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="3"] {
+		svg:nth-child(-n+3) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="4"] {
+		svg:nth-child(-n+4) {
+			fill: $primary-color;
+		}
+	}
+	&[data-stars="5"] {
+		svg:nth-child(-n+5) {
+			fill: $primary-color;
+		}
+	}
+}

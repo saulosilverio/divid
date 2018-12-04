@@ -1,0 +1,55 @@
+body {
+	font-family: 'Metric', Helvetica, Arial, sans-serif;
+	font-size: 14pt;
+	touch-action: manipulation;
+	color: $primary-color;
+}
+a {
+	color: $primary-color;
+	text-decoration: none;
+}
+img {
+	height: auto;
+	width: 100%;
+	max-width: 100%;
+}
+.ui-mobile {
+	//height: 100vh !important;
+}
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+section {
+	padding: ($h-navbar + $padding-sm) $padding-md $h-tabbar $padding-md;
+	
+	/* Status bar height on iOS 10 */
+    padding-top: calc(44pt + 20pt);
+    /* Status bar height on iOS 11.0 */
+    padding-top: calc(44pt + constant(safe-area-inset-top));
+    /* Status bar height on iOS 11+ */
+    padding-top: calc(44pt + env(safe-area-inset-top));
+	
+	
+	.conteudo {
+
+	}
+	
+	&.n-tabbar {
+		padding-bottom: 0 !important;
+		
+	}
+	
+	.empty {
+		color: $light-color;
+		display: flex;
+		align-items: center;
+		font-weight: normal;
+		justify-content: center;
+		height: calc(100vh - 93pt);
+	}
+}

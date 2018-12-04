@@ -1,0 +1,139 @@
+$colors: red, orange, yellow, green, blue, purple;
+$repeat: 10;  // How often you want the pattern to repeat.
+
+.container-times {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+	
+	> div {
+		width: 48%;
+	}
+}
+.time {
+	margin-bottom: 18pt;
+	
+	strong {
+		color: $light-color;
+	}
+	
+	ul {
+		li {
+			display: flex;
+			align-items: baseline;
+			padding: 3pt 0;
+			white-space: nowrap;
+			
+			&:before {
+				background: $light-color;
+				border-radius: 100%;
+				content: "";
+				margin-right: 4pt;
+				height: 6pt;
+				width: 6pt;
+				min-width: 6pt;
+			}
+			
+			span {
+				display: inline-block;
+				text-overflow: ellipsis;
+				max-width: 60%;
+				overflow: hidden;
+			}
+			small {
+				color: $light-color;
+				text-transform: uppercase;
+			}
+		}
+	}
+	
+	&:nth-child(even) {
+		text-align: right;
+		
+		ul {
+			li {
+				justify-content: flex-end;
+				
+				span {
+					order: 2;
+				}
+				small {
+					order: 1;
+					
+					&:after {
+						content: "-";
+						margin: 0 2pt;
+					}
+				}
+				&:before {
+					order: 3;
+					margin-right: 0;
+					margin-left: 4pt;
+				}
+			}
+		}
+	}
+	&:nth-child(odd) {
+		ul {
+			li {
+				small {					
+					&:before {
+						content: "-";
+						margin: 0 2pt;
+					}
+				}
+			}
+		}
+	}
+	
+	// CORES
+	&:nth-child(1n) {
+		strong {
+			color: #FFBD53;
+		}
+		ul li:before {
+			background: #FFBD53;
+		}
+	}
+	&:nth-child(2n) {
+		strong {
+			color: #53B6FF;
+		}
+		ul li:before {
+			background: #53B6FF;
+		}
+	}
+	&:nth-child(3n) {
+		strong {
+			color: #FD3CD1;
+		}
+		ul li:before {
+			background: #FD3CD1;
+		}
+	}
+	&:nth-child(4n) {
+		strong {
+			color: #56c377;
+		}
+		ul li:before {
+			background: #56c377;
+		}
+	}
+	&:nth-child(5n) {
+		strong {
+			color: #ec6666;
+		}
+		ul li:before {
+			background: #ec6666;
+		}
+	}
+	&:nth-child(6n) {
+		strong {
+			color: #7e67ee;
+		}
+		ul li:before {
+			background: #7e67ee;
+		}
+	}
+}
