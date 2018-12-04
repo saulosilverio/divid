@@ -28,6 +28,6 @@
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>DIVID-2018.01</string>
 	<key>WKWatchKitApp</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
