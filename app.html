@@ -68,6 +68,23 @@
 				}
 			}
 			
+			var ar_team = [];
+			function shuffleTeam(){
+				qtde_change = Math.floor(Math.random() * 6);// returns a random integer from 0 to 5
+				if(ar_team.length > 0){
+					balance_team = [];	
+					for(x=0; x<qtde_change;x++){
+						key_team = Math.floor(Math.random() * ar_team.length);
+						key_player = Math.floor(Math.random() * ar_team[key_team].length);
+						if(typeof(ar_team[key_team][key_player]) != "undefined"){
+							balance_team.push(ar_team[key_team][key_player]);
+							ar_team[key_team].splice(key_player,1);
+						}
+					}
+					ar_team = balanceTeam(balance_team,ar_team);
+				}
+				htmlTeam(ar_team);
+			}
 			function dividPlayers(){
 				ar_position = [];
 				ar_positions_players = [];
@@ -79,7 +96,7 @@
 				});
 				
 				if(players_select.length > 0){
-					for(var i=0; i<players_select.length;i++){
+					for(i=0; i<players_select.length;i++){
 						if(typeof(ar_positions_players[players_select[i].position]) == "undefined") {
 							ar_positions_players[players_select[i].position] = [];
 						}
@@ -94,54 +111,78 @@
 				div = (( (typeof(Storage) !== "undefined" && localStorage.divid_config) )? localStorage.divid_config : 2);
 				//LOOP POSITION
 				if(ar_position.length > 0){
-					for(var i=0; i<ar_position.length;i++){
-						team = 0;
-						for(var j=0; j<ar_positions_players[ar_position[i]].length;j++){
-							tmp = team+1;
-							next_team = ( tmp >= div )? 0 : tmp;
-							if(typeof(ar_team[team]) == "undefined") {
-								ar_team[team] = [];
+					balance_team = [];
+					for(i=0; i<ar_position.length;i++){
+						if( ar_positions_players[ar_position[i]].length > 1){
+							team = 0;
+							for(j=0; j<ar_positions_players[ar_position[i]].length;j++){
+								tmp = team+1;
+								next_team = ( tmp >= div )? 0 : tmp;
+								if(typeof(ar_team[team]) == "undefined") {
+									ar_team[team] = [];
+								}
+								if(typeof(ar_team[next_team]) == "undefined") {
+									ar_team[next_team] = [];
+								}
+								
+								if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
+									ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
+								}else{
+									ar_team[team].push( ar_positions_players[ar_position[i]][j] );
+								}
+								team = next_team;
 							}
-							if(typeof(ar_team[next_team]) == "undefined") {
-								ar_team[next_team] = [];
-							}
-							
-							if( typeof(ar_team[next_team]) !== "undefined"  && ar_team[team].length > ar_team[next_team].length  ){
-								ar_team[next_team].push( ar_positions_players[ar_position[i]][j] );
-							}else{
-								ar_team[team].push( ar_positions_players[ar_position[i]][j] );
-							}
-							team = next_team;
+						}else{
+							balance_team.push( ar_positions_players[ar_position[i]][0] );
 						}
 					}
+					//BALANCING TEAM
+					balanceTeam(balance_team,ar_team);
 				}
-				//BALANCING TEAM
-				
-				
+				htmlTeam(ar_team);
+				$.mobile.navigate("#equipes", {  transition: "slide"  });
+			}
+			
+			function balanceTeam(balance_team,ar_team_param){
+				balance_team = multiSort(balance_team);
+				team = 0;
+				for(i=0; i<balance_team.length;i++){
+					tmp = team+1;
+					next_team = ( tmp >= div )? 0 : tmp;
+					if( ar_team_param[team].length > ar_team_param[next_team].length  ){
+						ar_team_param[next_team].push( balance_team[i] );
+					}else{
+						ar_team_param[team].push( balance_team[i] );
+					}
+					team = next_team;
+				}
+				return ar_team_param;
+			}
+			
+			function htmlTeam(ar_team){
 				$('#list_team').html('');
 				if(ar_team.length > 0){
-					for(var i=0; i<ar_team.length;i++){
+					for(i=0; i<ar_team.length;i++){
 						html = '';
 						sum_skill = 0;
 						if(ar_team[i].length > 0){
-							for(var j=0; j<ar_team[i].length;j++){
-								sum_skill = sum_skill+ar_team[i][j].skill;
+							for(j=0; j<ar_team[i].length;j++){
+								sum_skill = sum_skill+parseInt(ar_team[i][j].skill);
 								html += '<li><span>'+ar_team[i][j].name+'</span> <small>'+ar_team[i][j].position.substr(0, 3)+'</small></li>';
 							}
 						}
-						html_team = '<div class="time"><strong>Time '+(i+1)+'</strong><ul>';// '+(sum_skill/ar_team[i].length)+' 
+						html_team = '<div class="time"><strong>Time '+(i+1)+' </strong><ul>';// ' '+parseInt(sum_skill/ar_team[i].length)+
 						html += '</ul></div>';
 						$('#list_team').append(html_team+html);
 					}
 				}
-				$.mobile.navigate("#equipes", {  transition: "slide"  });
 			}
 			
 			function refreshListPlayers(){
 				$('#list_players').html("");
 				$('#select_players').html("");
 				if(players.length > 0){
-					for(var i=0; i<players.length;i++){
+					for(i=0; i<players.length;i++){
 						$('#list_players').append(
 							'<li id="index-'+i+'"><a href="javascript: void(0)" onclick="editPlayer('+i+')"><div><strong>'+players[i].name+'</strong><small>' +players[i].position+'</small></div>'+
 								'<div class="nivel" data-stars="' +players[i].skill+'">'+
@@ -228,6 +269,7 @@
 				$('#salve_conf').on('click', setConfiguration);
 				$('#dividir').on('click', dividPlayers);
                 $('#send_mail').on('click', sendEmail);
+                $('#btn_shuffle').on('click', shuffleTeam);
 				
 				if (typeof(Storage) !== "undefined" && localStorage.divid_config) {
 		        	$('#config').val(localStorage.divid_config);
@@ -408,6 +450,7 @@
             <div class="conteudo">
                 <div id="list_team" class="container-times">
                 </div>
+                <button type="button" id="btn_shuffle" data-transition="slide" data-direction="reverse">Shuffle</button>
             </div>
 		</section>
 	</div>
