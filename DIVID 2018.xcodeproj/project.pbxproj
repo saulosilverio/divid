@@ -1,0 +1,1117 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6C8E545F21A55C9A0056B4E3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C8E545D21A55C9A0056B4E3 /* Interface.storyboard */; };
+		6C8E546121A55C9B0056B4E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C8E546021A55C9B0056B4E3 /* Assets.xcassets */; };
+		6C8E546821A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6C8E546721A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6C8E546D21A55C9C0056B4E3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E546C21A55C9C0056B4E3 /* InterfaceController.swift */; };
+		6C8E546F21A55C9C0056B4E3 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E546E21A55C9C0056B4E3 /* ExtensionDelegate.swift */; };
+		6C8E547121A55C9C0056B4E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C8E547021A55C9C0056B4E3 /* Assets.xcassets */; };
+		6C8E547521A55C9C0056B4E3 /* DIVID 2018WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6C8E545B21A55C9A0056B4E3 /* DIVID 2018WatchApp.app */; };
+		6CA2C046219F1855004AEFDD /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 6CA2C045219F1855004AEFDD /* assets */; };
+		6CBB1E22219F89A100F8B085 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CBB1E21219F89A100F8B085 /* Images.xcassets */; };
+		E954D22C219AEFA400187F77 /* app.html in Resources */ = {isa = PBXBuildFile; fileRef = E954D22B219AEFA400187F77 /* app.html */; };
+		E967C38721946B9800311149 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E967C38621946B9800311149 /* AppDelegate.swift */; };
+		E967C38921946B9800311149 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E967C38821946B9800311149 /* ViewController.swift */; };
+		E967C38F21946B9800311149 /* DIVID_2018.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E967C38D21946B9800311149 /* DIVID_2018.xcdatamodeld */; };
+		E967C39421946B9900311149 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E967C39221946B9900311149 /* LaunchScreen.storyboard */; };
+		E9F33687219DED83006BEE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F33686219DED83006BEE92 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6C8E546921A55C9C0056B4E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E967C37B21946B9800311149 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C8E546621A55C9C0056B4E3;
+			remoteInfo = "DividWatchApp Extension";
+		};
+		6C8E547321A55C9C0056B4E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E967C37B21946B9800311149 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C8E545A21A55C9A0056B4E3;
+			remoteInfo = DividWatchApp;
+		};
+		E967C39B21946B9900311149 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E967C37B21946B9800311149 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E967C38221946B9800311149;
+			remoteInfo = "DIVID 2018";
+		};
+		E967C3A621946B9A00311149 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E967C37B21946B9800311149 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E967C38221946B9800311149;
+			remoteInfo = "DIVID 2018";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6C8E547921A55C9C0056B4E3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6C8E546821A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C8E547D21A55C9C0056B4E3 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6C8E547521A55C9C0056B4E3 /* DIVID 2018WatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6C49E9AF21A421FE004D4D21 /* DIVID 2018WatchOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DIVID 2018WatchOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8E545B21A55C9A0056B4E3 /* DIVID 2018WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DIVID 2018WatchApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8E545E21A55C9A0056B4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6C8E546021A55C9B0056B4E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6C8E546221A55C9B0056B4E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C8E546721A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DIVID 2018WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8E546C21A55C9C0056B4E3 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6C8E546E21A55C9C0056B4E3 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6C8E547021A55C9C0056B4E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6C8E547221A55C9C0056B4E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C8E547E21A55D160056B4E3 /* app.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = app.html; sourceTree = "<group>"; };
+		6C8E548121A55D160056B4E3 /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		6C8E548221A55D160056B4E3 /* jquery.mobile.structure-1.4.5.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery.mobile.structure-1.4.5.min.css"; sourceTree = "<group>"; };
+		6C8E548421A55D160056B4E3 /* svgxuse.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = svgxuse.js; sourceTree = "<group>"; };
+		6C8E548521A55D160056B4E3 /* jquery.mobile-1.4.5.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery.mobile-1.4.5.js"; sourceTree = "<group>"; };
+		6C8E548621A55D160056B4E3 /* scripts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = scripts.js; sourceTree = "<group>"; };
+		6C8E548721A55D160056B4E3 /* jquery-2.1.3.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-2.1.3.js"; sourceTree = "<group>"; };
+		6C8E548821A55D160056B4E3 /* scripts-min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "scripts-min.js"; sourceTree = "<group>"; };
+		6C8E548921A55D160056B4E3 /* skill_sort.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = skill_sort.js; sourceTree = "<group>"; };
+		6C8E548B21A55D160056B4E3 /* _fonts.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _fonts.scss; sourceTree = "<group>"; };
+		6C8E548C21A55D160056B4E3 /* _informacoes.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _informacoes.scss; sourceTree = "<group>"; };
+		6C8E548D21A55D160056B4E3 /* _navbar.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _navbar.scss; sourceTree = "<group>"; };
+		6C8E548E21A55D160056B4E3 /* _variables.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _variables.scss; sourceTree = "<group>"; };
+		6C8E548F21A55D160056B4E3 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; };
+		6C8E549021A55D160056B4E3 /* _splash.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _splash.scss; sourceTree = "<group>"; };
+		6C8E549121A55D160056B4E3 /* _general.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _general.scss; sourceTree = "<group>"; };
+		6C8E549221A55D160056B4E3 /* _times.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _times.scss; sourceTree = "<group>"; };
+		6C8E549321A55D160056B4E3 /* _style.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _style.scss; sourceTree = "<group>"; };
+		6C8E549421A55D160056B4E3 /* _tabbar.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _tabbar.scss; sourceTree = "<group>"; };
+		6C8E549521A55D160056B4E3 /* _lista-jogadores.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = "_lista-jogadores.scss"; sourceTree = "<group>"; };
+		6C8E549621A55D160056B4E3 /* _form.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _form.scss; sourceTree = "<group>"; };
+		6C8E549721A55D160056B4E3 /* config.codekit3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.codekit3; sourceTree = "<group>"; };
+		6C8E549921A55D160056B4E3 /* logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = logo.svg; sourceTree = "<group>"; };
+		6C8E549A21A55D160056B4E3 /* icons.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = icons.svg; sourceTree = "<group>"; };
+		6C8E549C21A55D160056B4E3 /* dividir.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = dividir.svg; sourceTree = "<group>"; };
+		6C8E549D21A55D160056B4E3 /* jogadores.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = jogadores.svg; sourceTree = "<group>"; };
+		6C8E549E21A55D160056B4E3 /* check.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = check.svg; sourceTree = "<group>"; };
+		6C8E549F21A55D160056B4E3 /* seta-dir.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "seta-dir.svg"; sourceTree = "<group>"; };
+		6C8E54A021A55D160056B4E3 /* referencia.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = referencia.html; sourceTree = "<group>"; };
+		6C8E54A121A55D160056B4E3 /* nivel.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = nivel.svg; sourceTree = "<group>"; };
+		6C8E54A221A55D160056B4E3 /* mais.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = mais.svg; sourceTree = "<group>"; };
+		6C8E54A321A55D160056B4E3 /* lifebuoy.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = lifebuoy.svg; sourceTree = "<group>"; };
+		6C8E54A421A55D160056B4E3 /* seta-esq.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "seta-esq.svg"; sourceTree = "<group>"; };
+		6C8E54A621A55D160056B4E3 /* Metric-Semibold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Semibold.woff"; sourceTree = "<group>"; };
+		6C8E54A721A55D160056B4E3 /* Metric-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Regular.ttf"; sourceTree = "<group>"; };
+		6C8E54A821A55D160056B4E3 /* Metric-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Semibold.ttf"; sourceTree = "<group>"; };
+		6C8E54A921A55D160056B4E3 /* Metric-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Medium.ttf"; sourceTree = "<group>"; };
+		6C8E54AA21A55D160056B4E3 /* Metric-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Regular.otf"; sourceTree = "<group>"; };
+		6C8E54AB21A55D160056B4E3 /* Metric-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Semibold.otf"; sourceTree = "<group>"; };
+		6C8E54AC21A55D160056B4E3 /* Metric-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Medium.otf"; sourceTree = "<group>"; };
+		6C8E54AD21A55D160056B4E3 /* Metric-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Regular.eot"; sourceTree = "<group>"; };
+		6C8E54AE21A55D160056B4E3 /* Metric-Medium.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Medium.eot"; sourceTree = "<group>"; };
+		6C8E54AF21A55D160056B4E3 /* Metric-Semibold.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Semibold.eot"; sourceTree = "<group>"; };
+		6C8E54B021A55D160056B4E3 /* Metric-Regular.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Metric-Regular.svg"; sourceTree = "<group>"; };
+		6C8E54B121A55D160056B4E3 /* Metric-Semibold.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Metric-Semibold.svg"; sourceTree = "<group>"; };
+		6C8E54B221A55D160056B4E3 /* Metric-Medium.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Metric-Medium.svg"; sourceTree = "<group>"; };
+		6C8E54B321A55D160056B4E3 /* Metric-Medium.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Medium.woff"; sourceTree = "<group>"; };
+		6C8E54B421A55D160056B4E3 /* Metric-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Metric-Regular.woff"; sourceTree = "<group>"; };
+		6CA2C045219F1855004AEFDD /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		6CBB1E21219F89A100F8B085 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "/Applications/MAMP/htdocs/divid/DIVID 2018/Images.xcassets"; sourceTree = "<absolute>"; };
+		E954D22B219AEFA400187F77 /* app.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = app.html; sourceTree = "<group>"; };
+		E967C38321946B9800311149 /* DIVID 2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DIVID 2018.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E967C38621946B9800311149 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E967C38821946B9800311149 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E967C38E21946B9800311149 /* DIVID_2018.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DIVID_2018.xcdatamodel; sourceTree = "<group>"; };
+		E967C39321946B9900311149 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E967C39521946B9900311149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E967C39A21946B9900311149 /* DIVID 2018Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DIVID 2018Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E967C3A521946B9A00311149 /* DIVID 2018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DIVID 2018UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9F33686219DED83006BEE92 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6C49E9AC21A421FE004D4D21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C8E546421A55C9C0056B4E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C38021946B9800311149 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C39721946B9900311149 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C3A221946B9A00311149 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6C8E545C21A55C9A0056B4E3 /* DividWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E547F21A55D160056B4E3 /* assets */,
+				6C8E547E21A55D160056B4E3 /* app.html */,
+				6C8E545D21A55C9A0056B4E3 /* Interface.storyboard */,
+				6C8E546021A55C9B0056B4E3 /* Assets.xcassets */,
+				6C8E546221A55C9B0056B4E3 /* Info.plist */,
+			);
+			path = DividWatchApp;
+			sourceTree = "<group>";
+		};
+		6C8E546B21A55C9C0056B4E3 /* DividWatchApp Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E546C21A55C9C0056B4E3 /* InterfaceController.swift */,
+				6C8E546E21A55C9C0056B4E3 /* ExtensionDelegate.swift */,
+				6C8E547021A55C9C0056B4E3 /* Assets.xcassets */,
+				6C8E547221A55C9C0056B4E3 /* Info.plist */,
+			);
+			path = "DividWatchApp Extension";
+			sourceTree = "<group>";
+		};
+		6C8E547F21A55D160056B4E3 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E548021A55D160056B4E3 /* css */,
+				6C8E548321A55D160056B4E3 /* js */,
+				6C8E548A21A55D160056B4E3 /* scss */,
+				6C8E549721A55D160056B4E3 /* config.codekit3 */,
+				6C8E549821A55D160056B4E3 /* img */,
+				6C8E549B21A55D160056B4E3 /* icons */,
+				6C8E54A521A55D160056B4E3 /* fonts */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		6C8E548021A55D160056B4E3 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E548121A55D160056B4E3 /* style.css */,
+				6C8E548221A55D160056B4E3 /* jquery.mobile.structure-1.4.5.min.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		6C8E548321A55D160056B4E3 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E548421A55D160056B4E3 /* svgxuse.js */,
+				6C8E548521A55D160056B4E3 /* jquery.mobile-1.4.5.js */,
+				6C8E548621A55D160056B4E3 /* scripts.js */,
+				6C8E548721A55D160056B4E3 /* jquery-2.1.3.js */,
+				6C8E548821A55D160056B4E3 /* scripts-min.js */,
+				6C8E548921A55D160056B4E3 /* skill_sort.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		6C8E548A21A55D160056B4E3 /* scss */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E548B21A55D160056B4E3 /* _fonts.scss */,
+				6C8E548C21A55D160056B4E3 /* _informacoes.scss */,
+				6C8E548D21A55D160056B4E3 /* _navbar.scss */,
+				6C8E548E21A55D160056B4E3 /* _variables.scss */,
+				6C8E548F21A55D160056B4E3 /* _reset.scss */,
+				6C8E549021A55D160056B4E3 /* _splash.scss */,
+				6C8E549121A55D160056B4E3 /* _general.scss */,
+				6C8E549221A55D160056B4E3 /* _times.scss */,
+				6C8E549321A55D160056B4E3 /* _style.scss */,
+				6C8E549421A55D160056B4E3 /* _tabbar.scss */,
+				6C8E549521A55D160056B4E3 /* _lista-jogadores.scss */,
+				6C8E549621A55D160056B4E3 /* _form.scss */,
+			);
+			path = scss;
+			sourceTree = "<group>";
+		};
+		6C8E549821A55D160056B4E3 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E549921A55D160056B4E3 /* logo.svg */,
+				6C8E549A21A55D160056B4E3 /* icons.svg */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		6C8E549B21A55D160056B4E3 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E549C21A55D160056B4E3 /* dividir.svg */,
+				6C8E549D21A55D160056B4E3 /* jogadores.svg */,
+				6C8E549E21A55D160056B4E3 /* check.svg */,
+				6C8E549F21A55D160056B4E3 /* seta-dir.svg */,
+				6C8E54A021A55D160056B4E3 /* referencia.html */,
+				6C8E54A121A55D160056B4E3 /* nivel.svg */,
+				6C8E54A221A55D160056B4E3 /* mais.svg */,
+				6C8E54A321A55D160056B4E3 /* lifebuoy.svg */,
+				6C8E54A421A55D160056B4E3 /* seta-esq.svg */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		6C8E54A521A55D160056B4E3 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6C8E54A621A55D160056B4E3 /* Metric-Semibold.woff */,
+				6C8E54A721A55D160056B4E3 /* Metric-Regular.ttf */,
+				6C8E54A821A55D160056B4E3 /* Metric-Semibold.ttf */,
+				6C8E54A921A55D160056B4E3 /* Metric-Medium.ttf */,
+				6C8E54AA21A55D160056B4E3 /* Metric-Regular.otf */,
+				6C8E54AB21A55D160056B4E3 /* Metric-Semibold.otf */,
+				6C8E54AC21A55D160056B4E3 /* Metric-Medium.otf */,
+				6C8E54AD21A55D160056B4E3 /* Metric-Regular.eot */,
+				6C8E54AE21A55D160056B4E3 /* Metric-Medium.eot */,
+				6C8E54AF21A55D160056B4E3 /* Metric-Semibold.eot */,
+				6C8E54B021A55D160056B4E3 /* Metric-Regular.svg */,
+				6C8E54B121A55D160056B4E3 /* Metric-Semibold.svg */,
+				6C8E54B221A55D160056B4E3 /* Metric-Medium.svg */,
+				6C8E54B321A55D160056B4E3 /* Metric-Medium.woff */,
+				6C8E54B421A55D160056B4E3 /* Metric-Regular.woff */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		E967C37A21946B9800311149 = {
+			isa = PBXGroup;
+			children = (
+				E967C38521946B9800311149 /* DIVID 2018 */,
+				6C8E545C21A55C9A0056B4E3 /* DividWatchApp */,
+				6C8E546B21A55C9C0056B4E3 /* DividWatchApp Extension */,
+				E967C38421946B9800311149 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E967C38421946B9800311149 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E967C38321946B9800311149 /* DIVID 2018.app */,
+				E967C39A21946B9900311149 /* DIVID 2018Tests.xctest */,
+				E967C3A521946B9A00311149 /* DIVID 2018UITests.xctest */,
+				6C49E9AF21A421FE004D4D21 /* DIVID 2018WatchOS.appex */,
+				6C8E545B21A55C9A0056B4E3 /* DIVID 2018WatchApp.app */,
+				6C8E546721A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E967C38521946B9800311149 /* DIVID 2018 */ = {
+			isa = PBXGroup;
+			children = (
+				6CA2C045219F1855004AEFDD /* assets */,
+				E954D22B219AEFA400187F77 /* app.html */,
+				E967C38621946B9800311149 /* AppDelegate.swift */,
+				E967C38821946B9800311149 /* ViewController.swift */,
+				E967C39221946B9900311149 /* LaunchScreen.storyboard */,
+				E967C39521946B9900311149 /* Info.plist */,
+				E967C38D21946B9800311149 /* DIVID_2018.xcdatamodeld */,
+				E9F33686219DED83006BEE92 /* Main.storyboard */,
+				6CBB1E21219F89A100F8B085 /* Images.xcassets */,
+			);
+			path = "DIVID 2018";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6C49E9AE21A421FE004D4D21 /* DIVID 2018WatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C49E9B621A421FE004D4D21 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchOS" */;
+			buildPhases = (
+				6C49E9AB21A421FE004D4D21 /* Sources */,
+				6C49E9AC21A421FE004D4D21 /* Frameworks */,
+				6C49E9AD21A421FE004D4D21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DIVID 2018WatchOS";
+			productName = DividWatchOS;
+			productReference = 6C49E9AF21A421FE004D4D21 /* DIVID 2018WatchOS.appex */;
+			productType = "com.apple.product-type.app-extension.intents-service";
+		};
+		6C8E545A21A55C9A0056B4E3 /* DIVID 2018WatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C8E547A21A55C9C0056B4E3 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchApp" */;
+			buildPhases = (
+				6C8E545921A55C9A0056B4E3 /* Resources */,
+				6C8E547921A55C9C0056B4E3 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C8E546A21A55C9C0056B4E3 /* PBXTargetDependency */,
+			);
+			name = "DIVID 2018WatchApp";
+			productName = DividWatchApp;
+			productReference = 6C8E545B21A55C9A0056B4E3 /* DIVID 2018WatchApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6C8E546621A55C9C0056B4E3 /* DIVID 2018WatchApp Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C8E547621A55C9C0056B4E3 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchApp Extension" */;
+			buildPhases = (
+				6C8E546321A55C9C0056B4E3 /* Sources */,
+				6C8E546421A55C9C0056B4E3 /* Frameworks */,
+				6C8E546521A55C9C0056B4E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DIVID 2018WatchApp Extension";
+			productName = "DividWatchApp Extension";
+			productReference = 6C8E546721A55C9C0056B4E3 /* DIVID 2018WatchApp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		E967C38221946B9800311149 /* DIVID 2018 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E967C3AE21946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018" */;
+			buildPhases = (
+				E967C37F21946B9800311149 /* Sources */,
+				E967C38021946B9800311149 /* Frameworks */,
+				E967C38121946B9800311149 /* Resources */,
+				6C8E547D21A55C9C0056B4E3 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C8E547421A55C9C0056B4E3 /* PBXTargetDependency */,
+			);
+			name = "DIVID 2018";
+			productName = "DIVID 2018";
+			productReference = E967C38321946B9800311149 /* DIVID 2018.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E967C39921946B9900311149 /* DIVID 2018Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E967C3B121946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018Tests" */;
+			buildPhases = (
+				E967C39621946B9900311149 /* Sources */,
+				E967C39721946B9900311149 /* Frameworks */,
+				E967C39821946B9900311149 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E967C39C21946B9900311149 /* PBXTargetDependency */,
+			);
+			name = "DIVID 2018Tests";
+			productName = "DIVID 2018Tests";
+			productReference = E967C39A21946B9900311149 /* DIVID 2018Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E967C3A421946B9A00311149 /* DIVID 2018UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E967C3B421946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018UITests" */;
+			buildPhases = (
+				E967C3A121946B9A00311149 /* Sources */,
+				E967C3A221946B9A00311149 /* Frameworks */,
+				E967C3A321946B9A00311149 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E967C3A721946B9A00311149 /* PBXTargetDependency */,
+			);
+			name = "DIVID 2018UITests";
+			productName = "DIVID 2018UITests";
+			productReference = E967C3A521946B9A00311149 /* DIVID 2018UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E967C37B21946B9800311149 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					LaunchImage,
+				);
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Paulo Nhaia";
+				TargetAttributes = {
+					6C49E9AE21A421FE004D4D21 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					6C8E545A21A55C9A0056B4E3 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					6C8E546621A55C9C0056B4E3 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E967C38221946B9800311149 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E967C39921946B9900311149 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = E967C38221946B9800311149;
+					};
+					E967C3A421946B9A00311149 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = E967C38221946B9800311149;
+					};
+				};
+			};
+			buildConfigurationList = E967C37E21946B9800311149 /* Build configuration list for PBXProject "DIVID 2018" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E967C37A21946B9800311149;
+			productRefGroup = E967C38421946B9800311149 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E967C38221946B9800311149 /* DIVID 2018 */,
+				E967C39921946B9900311149 /* DIVID 2018Tests */,
+				E967C3A421946B9A00311149 /* DIVID 2018UITests */,
+				6C49E9AE21A421FE004D4D21 /* DIVID 2018WatchOS */,
+				6C8E545A21A55C9A0056B4E3 /* DIVID 2018WatchApp */,
+				6C8E546621A55C9C0056B4E3 /* DIVID 2018WatchApp Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6C49E9AD21A421FE004D4D21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C8E545921A55C9A0056B4E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8E546121A55C9B0056B4E3 /* Assets.xcassets in Resources */,
+				6C8E545F21A55C9A0056B4E3 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C8E546521A55C9C0056B4E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8E547121A55C9C0056B4E3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C38121946B9800311149 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CA2C046219F1855004AEFDD /* assets in Resources */,
+				6CBB1E22219F89A100F8B085 /* Images.xcassets in Resources */,
+				E9F33687219DED83006BEE92 /* Main.storyboard in Resources */,
+				E967C39421946B9900311149 /* LaunchScreen.storyboard in Resources */,
+				E954D22C219AEFA400187F77 /* app.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C39821946B9900311149 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C3A321946B9A00311149 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6C49E9AB21A421FE004D4D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C8E546321A55C9C0056B4E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8E546F21A55C9C0056B4E3 /* ExtensionDelegate.swift in Sources */,
+				6C8E546D21A55C9C0056B4E3 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C37F21946B9800311149 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E967C38F21946B9800311149 /* DIVID_2018.xcdatamodeld in Sources */,
+				E967C38921946B9800311149 /* ViewController.swift in Sources */,
+				E967C38721946B9800311149 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C39621946B9900311149 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E967C3A121946B9A00311149 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6C8E546A21A55C9C0056B4E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6C8E546621A55C9C0056B4E3 /* DIVID 2018WatchApp Extension */;
+			targetProxy = 6C8E546921A55C9C0056B4E3 /* PBXContainerItemProxy */;
+		};
+		6C8E547421A55C9C0056B4E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6C8E545A21A55C9A0056B4E3 /* DIVID 2018WatchApp */;
+			targetProxy = 6C8E547321A55C9C0056B4E3 /* PBXContainerItemProxy */;
+		};
+		E967C39C21946B9900311149 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E967C38221946B9800311149 /* DIVID 2018 */;
+			targetProxy = E967C39B21946B9900311149 /* PBXContainerItemProxy */;
+		};
+		E967C3A721946B9A00311149 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E967C38221946B9800311149 /* DIVID 2018 */;
+			targetProxy = E967C3A621946B9A00311149 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6C8E545D21A55C9A0056B4E3 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C8E545E21A55C9A0056B4E3 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		E967C39221946B9900311149 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E967C39321946B9900311149 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6C49E9B421A421FE004D4D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = DividWatchOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.DividWatchOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		6C49E9B521A421FE004D4D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = DividWatchOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.DividWatchOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		6C8E547721A55C9C0056B4E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = "DividWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		6C8E547821A55C9C0056B4E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = "DividWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		6C8E547B21A55C9C0056B4E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				IBSC_MODULE = DividWatchApp_Extension;
+				INFOPLIST_FILE = DividWatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		6C8E547C21A55C9C0056B4E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				IBSC_MODULE = DividWatchApp_Extension;
+				INFOPLIST_FILE = DividWatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		E967C3AC21946B9A00311149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E967C3AD21946B9A00311149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E967C3AF21946B9A00311149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = "DIVID 2018/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E967C3B021946B9A00311149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY9NDHKB5M;
+				INFOPLIST_FILE = "DIVID 2018/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Divid.01;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E967C3B221946B9A00311149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H48AL4LS52;
+				INFOPLIST_FILE = "DIVID 2018Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DIVID.DIVID-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DIVID 2018.app/DIVID 2018";
+			};
+			name = Debug;
+		};
+		E967C3B321946B9A00311149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H48AL4LS52;
+				INFOPLIST_FILE = "DIVID 2018Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DIVID.DIVID-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DIVID 2018.app/DIVID 2018";
+			};
+			name = Release;
+		};
+		E967C3B521946B9A00311149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H48AL4LS52;
+				INFOPLIST_FILE = "DIVID 2018UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DIVID.DIVID-2018UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "DIVID 2018";
+			};
+			name = Debug;
+		};
+		E967C3B621946B9A00311149 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H48AL4LS52;
+				INFOPLIST_FILE = "DIVID 2018UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DIVID.DIVID-2018UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "DIVID 2018";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6C49E9B621A421FE004D4D21 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C49E9B421A421FE004D4D21 /* Debug */,
+				6C49E9B521A421FE004D4D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C8E547621A55C9C0056B4E3 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchApp Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C8E547721A55C9C0056B4E3 /* Debug */,
+				6C8E547821A55C9C0056B4E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C8E547A21A55C9C0056B4E3 /* Build configuration list for PBXNativeTarget "DIVID 2018WatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C8E547B21A55C9C0056B4E3 /* Debug */,
+				6C8E547C21A55C9C0056B4E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E967C37E21946B9800311149 /* Build configuration list for PBXProject "DIVID 2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E967C3AC21946B9A00311149 /* Debug */,
+				E967C3AD21946B9A00311149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E967C3AE21946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E967C3AF21946B9A00311149 /* Debug */,
+				E967C3B021946B9A00311149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E967C3B121946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E967C3B221946B9A00311149 /* Debug */,
+				E967C3B321946B9A00311149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E967C3B421946B9A00311149 /* Build configuration list for PBXNativeTarget "DIVID 2018UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E967C3B521946B9A00311149 /* Debug */,
+				E967C3B621946B9A00311149 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E967C38D21946B9800311149 /* DIVID_2018.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E967C38E21946B9800311149 /* DIVID_2018.xcdatamodel */,
+			);
+			currentVersion = E967C38E21946B9800311149 /* DIVID_2018.xcdatamodel */;
+			path = DIVID_2018.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E967C37B21946B9800311149 /* Project object */;
+}

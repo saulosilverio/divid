@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="26px" viewBox="0 0 28 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>jogadores</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="jogadores" fill-rule="nonzero" fill="#111111">
+            <polygon id="Shape" points="19.3827119 19.3 26.3997665 25.4519383 27.7182335 23.9480617 20.1352881 17.3 7.58271189 17.3 -0.000233539359 23.9480617 1.31823354 25.4519383 8.33528811 19.3"></polygon>
+            <path d="M13.859,14.6 C9.82732133,14.6 6.559,11.3316787 6.559,7.3 C6.559,3.26832133 9.82732133,0 13.859,0 C17.8906787,0 21.159,3.26832133 21.159,7.3 C21.159,11.3316787 17.8906787,14.6 13.859,14.6 Z M13.859,12.6 C16.7861092,12.6 19.159,10.2271092 19.159,7.3 C19.159,4.37289083 16.7861092,2 13.859,2 C10.9318908,2 8.559,4.37289083 8.559,7.3 C8.559,10.2271092 10.9318908,12.6 13.859,12.6 Z" id="Oval"></path>
+        </g>
+    </g>
+</svg>
